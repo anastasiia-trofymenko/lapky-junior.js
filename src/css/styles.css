@@ -12,7 +12,6 @@
 
 /* Sections style */
 @import url('./header.css');
-@import url('./footer.css');
 @import url('./Hero-Section.css');
 @import url('./Pets-List-Section.css');
 @import url('./About-Us-Section.css');
@@ -21,3 +20,4 @@
 @import url('./Animal-Details-Modal.css');
 @import url('./Order-Modal.css');
 @import url('./Animal-List-Section.css');
+@import url('./footer.css');
