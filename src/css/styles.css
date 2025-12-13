@@ -8,11 +8,16 @@
 @import url('./reset.css');
 @import url('./base.css');
 @import url('./container.css');
-@import url('./animations.css');
+
 
 /* Sections style */
 @import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
 @import url('./footer.css');
+@import url('./Hero-Section.css');
+@import url('./Pets-List-Section.css');
+@import url('./About-Us-Section.css');
+@import url('./FAQ-Section.css');
+@import url('./Success-Stories-Section.css');
+@import url('./Animal-Details-Modal.css');
+@import url('./Order-Modal.css');
+@import url('./Animal-List-Section.css');
