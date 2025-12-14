@@ -172,6 +172,9 @@
   .animals-item {
     width: 312px;
   }
+  .animals-btn {
+    width: 312px;
+  }
 }
 @media only screen and (min-width: 1440px) {
   .pets-title {
@@ -193,6 +196,9 @@
     font-size: 16px;
   }
   .animals-item {
+    width: 392px;
+  }
+  .animals-btn {
     width: 392px;
   }
 }
