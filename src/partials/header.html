@@ -1,19 +1,59 @@
 <header class="header">
-  <div class="container">
-    <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Site logo">
-        <svg class="nav-logo-icon" width="100" height="30">
-          <use href="{=$icon-path}"></use>
-        </svg>
-      </a>
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-act}" href="./page-2.html">Page 2</a>
+  <div class="container header-container">
+    <nav class="header-nav">
+      <svg class="icon-header-btn" width="157px" height="51px">
+        <use href="/img/icons.svg#icon-logo"></use>
+      </svg>
+
+      <!-- desktop navigation -->
+      <ul class="header-nav-list">
+        <li class="header-nav-item">
+          <a href="#" class="header-nav-link">Знайди друга</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-curr}" href="./page-3.html">Page 3</a>
+        <li class="header-nav-item">
+          <a href="#" class="header-nav-link">Про нас</a>
+        </li>
+        <li class="header-nav-item">
+          <a href="#" class="header-nav-link">Часті запитання</a>
+        </li>
+        <li class="header-nav-item">
+          <a href="#" class="header-nav-link">Історії успіху</a>
         </li>
       </ul>
+
+      <a href="#" class="header-btn">Взяти друга</a>
     </nav>
+
+    <!-- burger button -->
+    <button class="header-modal-btn">
+      <svg width="24px" height="24px">
+        <use href="/img/icons.svg#icon-menu"></use>
+      </svg>
+    </button>
+
+    <!-- mobile menu -->
+    <div class="header-modal-menu">
+      <button class="header-close-btn">
+        <svg width="24px" height="24px">
+          <use href="/img/icons.svg#icon-close"></use>
+        </svg>
+      </button>
+      <ul class="header-modal-list">
+        <li class="header-modal-item">
+          <a href="#" class="header-modal-link">Знайди друга</a>
+        </li>
+        <li class="header-modal-item">
+          <a href="#" class="header-modal-link">Про нас</a>
+        </li>
+        <li class="header-modal-item">
+          <a href="#" class="header-modal-link">Часті запитання</a>
+        </li>
+        <li class="header-modal-item">
+          <a href="#" class="header-modal-link">Історії успіху</a>
+        </li>
+      </ul>
+
+      <a href="#" class="header-btn">Взяти друга</a>
+    </div>
   </div>
 </header>
