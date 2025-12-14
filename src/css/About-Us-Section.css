@@ -1,21 +1,28 @@
-
-
+/* ===== Section ===== */
 .About-Us-Section {
   padding: 80px 0;
+  margin: 0 auto;
 }
 
 .About-wrap {
   text-align: center;
   margin-bottom: 32px;
 }
-.image-wrapper {
+
+/* ===== Swiper ===== */
+.swiper {
   position: relative;
-  border-radius: 16px;
-  overflow: hidden;
 }
 
 .swiper-slide {
   position: relative;
+}
+
+/* ===== Image ===== */
+.image-wrapper {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .swiper-slide img {
@@ -24,16 +31,20 @@
   object-fit: cover;
   display: block;
 }
+
+/* ===== Text over image ===== */
 .about-text {
   position: absolute;
   left: 24px;
   bottom: 24px;
   max-width: 480px;
   padding: 16px;
-  background: rgba(0, 0, 0, 0);
   color: #fff;
   border-radius: 8px;
+  background: rgba(0, 0, 0, 0);
 }
+
+/* ===== Arrows ===== */
 .about-arrow {
   position: absolute;
   top: 50%;
@@ -51,6 +62,7 @@
 
   background-color: #ffffffcc;
   cursor: pointer;
+  z-index: 10;
 }
 
 .about-arrow:hover,
@@ -63,6 +75,11 @@
   cursor: not-allowed;
 }
 
+/* accessibility */
+.about-arrow:focus-visible {
+  outline: 2px solid #000;
+}
+
 .about-arrow-left {
   left: 16px;
 }
@@ -70,7 +87,11 @@
 .about-arrow-right {
   right: 16px;
 }
+
+/* ===== Pagination ===== */
 .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
   background-color: #ccc;
   opacity: 1;
   cursor: pointer;
@@ -80,45 +101,39 @@
   background-color: #000;
 }
 
-/* mobile: 320–374 */
+/* ===== Responsive ===== */
 @media (max-width: 374px) {
   .swiper-slide img {
     height: 280px;
   }
 }
 
-/* mobile з 375 */
 @media (min-width: 375px) {
   .swiper-slide img {
     height: 320px;
   }
 }
 
-/* tablet */
 @media (min-width: 768px) {
   .swiper-slide img {
     height: 420px;
   }
 }
 
-/* desktop */
 @media (min-width: 1440px) {
-  .About-Us-Section{
+  .About-Us-Section {
     max-width: 1312px;
-  } 
+  }
+
   .swiper-slide img {
     height: 753px;
   }
-  .about-text{
-    position: absolute;
-    font-weight: 400;
+
+  .about-text {
     left: 63.5px;
     bottom: 64px;
     max-width: 548px;
-    min-height: 108px;
-    padding: 0px;
-    gap: 24px;
-    line-height: 150% ;
-    letter-spacing: 0;
+    padding: 0;
+    line-height: 150%;
   }
 }
