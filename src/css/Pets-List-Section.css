@@ -101,3 +101,14 @@
   background-color: #eee9e3;
 }
 /* end animals list */
+
+.loadmore-btn {
+  border: 1px solid #88765c;
+  border-radius: 8px;
+  padding: 12px 24px;
+  width: 335px;
+  height: 45px;
+  background-color: #88765c;
+  margin-top: 40px;
+  color: #ffffff;
+}
