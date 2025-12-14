@@ -35,3 +35,38 @@ function createMarkupCategories(arr) {
     )
     .join('');
 }
+let page = 1;
+async function createAnimalsCards() {
+  const { data } = await axios(`${BASE_URL}${ANIMALS_URL}`, {
+    params: {
+      page,
+      limit: 8,
+    },
+  });
+  console.log(data);
+
+  return data;
+}
+
+createAnimalsCards()
+  .then(data => {
+    allAnimals.insertAdjacentHTML(
+      'beforeend',
+      createMarkupAnimals(data.animals)
+    );
+  })
+  .catch(error => {});
+//
+
+function createMarkupAnimals(arr) {
+  return arr
+    .map(
+      ({ image, name, species, categories, age, gender, behavior }) =>
+        `<li><img src="${image}" alt="${species}"/><p>${species}</p><h2>${name}</h2><div>${categories
+          .map(({ name }) => `<h3>${name}</h3>`)
+          .join(
+            ''
+          )}</div><div><p>${age}</p><p>${gender}</p></div><p>${behavior}</p></li>`
+    )
+    .join('');
+}
