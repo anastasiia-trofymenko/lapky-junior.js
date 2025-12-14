@@ -1,5 +1,5 @@
 .header {
-  background-color: #f6f3ee;
+  background-color: white;
 }
 
 .header-container {
@@ -11,12 +11,15 @@
 .header-nav {
   display: flex;
   align-items: center;
-  gap: 12px;
+  width: 100%;
 }
 
 /* логотип */
 .icon-header-btn {
   display: block;
+  cursor: pointer;
+  padding: 7px 0;
+  margin-right: 25px;
 }
 
 /* desktop меню приховане */
@@ -26,11 +29,12 @@
 }
 
 /* бургер */
-.header-modal-btn {
+.header-burger-btn {
   background: none;
   border: none;
   padding: 8px;
   cursor: pointer;
+  margin-left: auto;
 }
 
 /* ==== */
@@ -91,13 +95,13 @@
     gap: 28px;
   }
 
-  .header-btn {
+  .header-modal-btn {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #9c8468;
+    padding: 8px 20px;
+    background-color: #88765c;
     color: #fff;
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: 8px;
   }
 }
 
@@ -105,19 +109,20 @@
 
 @media screen and (min-width: 1440px) {
   .header-container {
-    padding: 0 80px;
+    display: block;
+    padding: 0 64px;
   }
 
   /* показуємо desktop навігацію */
   .header-nav-list {
     display: flex;
-    list-style: none;
     gap: 32px;
-    margin: 0;
-    padding: 0;
   }
 
   .header-nav-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 8px;
     text-decoration: none;
     color: #2b2b2b;
     font-size: 14px;
@@ -125,17 +130,35 @@
 
   .header-btn {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #9c8468;
+    padding: 8px 20px;
+    background-color: #88765c;
     color: #fff;
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: 8px;
+    margin-left: auto;
+  }
+
+  .header-btn:hover,
+  .header-btn:focus {
+    color: #02060a;
+    background-color: #eee9e3;
+    border: 1px solid #88765c;
+  }
+
+  .header-btn:active {
+    box-shadow: inset 0 4px 6px -2px rgba(0, 0, 0, 0.03),
+      inset 0 12px 16px -4px rgba(0, 0, 0, 0.08);
+  }
+
+  .header-btn:disabled{
+    opacity: 0.3;
+    background-color: #88765C;
+    border: 1px solid #88765C;
   }
 
   /* ховаємо бургер і мобільне меню */
-  .header-modal-btn,
+  .header-burger-btn,
   .header-modal-menu {
     display: none;
   }
 }
-

@@ -30,15 +30,16 @@ padding-left: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 300ms ease;
 }
 
 .faq-toggle {
     position: relative;
     border: 0px solid rgba(2, 6, 10, 0.15);
-    border-radius: 8px;
+    border-radius: 0;
     width: 100%; 
     max-width: 335px;
-    background: #eee9e3;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -63,21 +64,20 @@ padding-left: 20px;
 
 .faq-answer {
     padding: 0px 24px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 300ms ease,
-                padding 300ms ease;
     border: 0px solid rgba(2, 6, 10, 0.15);
-    border-radius: 8px;
+    border-radius: 0 0 8px 8px;
     background: #eee9e3;
 }
 
 .faq-answer-txt{
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.5;
     color: #02060a;
     font-family: "IBM Plex Sans", sans-serif;
+    padding-right: 24px;
+    padding-bottom: 24px;
+    padding-left: 24px;
 }
 
 
@@ -89,15 +89,75 @@ padding-left: 20px;
     align-items: center;
 }
 
-
-/* Відкриття кнопки */
-
-
-.faq-item.is-open .faq-answer {
-    padding: 0 24px 24px;
-    max-height: 1000px;
+.ac-trigger::after {
+    display: none;
 }
 
+button.faq-toggle.ac-trigger {
+    background: #eee9e3;
+    border-radius: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.faq-item{
+    background: #eee9e3;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.faq-item.is-active .faq-toggle {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.faq-item.is-active .faq-svg{
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.faq-steps {
+    margin-top: 16px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.faq-steps li {
+    line-height: 1.5;
+}
+
+.faq-steps--dots {
+    margin-top: 16px;
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.faq-steps--dots li {
+    position: relative;
+    padding-left: 16px;
+    line-height: 1.5;
+    
+}
+
+.faq-steps--dots li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    transform: translateY(-50%);
+    font-size: 18px;
+    line-height: 1;
+}
+
+.faq-answer-txt p+p {
+    margin-top: 16px;
+}
 
 /* =================== FAQ-Section_tablet ==================== */
 
@@ -108,7 +168,8 @@ padding-left: 20px;
     min-width: 704px;
     min-height: 72px;
     padding: 20px 24px;
-    align-items: flex-start;
+   display: flex;
+   align-items: center;
     }
 
 .faq-question {
