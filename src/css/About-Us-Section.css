@@ -28,11 +28,9 @@
   position: absolute;
   left: 24px;
   bottom: 24px;
-
   max-width: 480px;
   padding: 16px;
-
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0);
   color: #fff;
   border-radius: 8px;
 }
@@ -105,7 +103,22 @@
 
 /* desktop */
 @media (min-width: 1440px) {
+  .About-Us-Section{
+    max-width: 1312px;
+  } 
   .swiper-slide img {
-    height: 500px;
+    height: 753px;
+  }
+  .about-text{
+    position: absolute;
+    font-weight: 400;
+    left: 63.5px;
+    bottom: 64px;
+    max-width: 548px;
+    min-height: 108px;
+    padding: 0px;
+    gap: 24px;
+    line-height: 150% ;
+    letter-spacing: 0;
   }
 }
