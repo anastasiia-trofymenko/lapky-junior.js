@@ -51,7 +51,7 @@
   font-weight: 500;
 }
 
-.data-active-btn {
+.active-btn {
   border: 1px solid #eee9e3;
   border-radius: 100px;
   background-color: #eee9e3;
@@ -79,6 +79,14 @@
 .animals-img {
   border-radius: 8px;
 }
+
+.animals-item-container {
+  height: 187px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .animals-subtitle {
   font-weight: 400;
   font-size: 10px;
@@ -167,6 +175,13 @@
   border: 1px solid #88765c;
   background-color: #eee9e3;
   color: #02060a;
+}
+
+.disabled {
+  background-color: #88765c;
+  opacity: 30%;
+  border: 1px solid #88765c;
+  color: #ffffff;
 }
 
 @media only screen and (min-width: 768px) {

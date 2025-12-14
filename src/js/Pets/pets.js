@@ -11,6 +11,10 @@ const deskMediaQuery = window.matchMedia('(min-width: 1440px)');
 
 const categories = document.querySelector('.categories-list');
 const allAnimals = document.querySelector('.animals-list');
+const listCategories = document.querySelector('.categories-list');
+const moreBtn = document.querySelector('.loadmore-btn');
+const activeCategories = document.querySelector('.categories-text');
+console.log(listCategories);
 
 async function createCategories() {
   const { data } = await axios(`${BASE_URL}${CATECORIES_URL}`);
@@ -78,9 +82,28 @@ function createMarkupAnimals(arr) {
           .map(({ name }) => `<h3 class="animals-categories">${name}</h3>`)
           .join(
             ''
-          )}</div><div class="animals-textlist"><p class="animals-subtitle">${age}</p><p class="animals-subtitle">${gender}</p></div></div>
-          <p class="animals-text">${behavior}</p>
+          )}</div><div class="animals-textlist"><p class="animals-subtitle">${age}</p><p class="animals-subtitle">${gender}</p></div>
+          <p class="animals-text">${behavior}</p></div>
+          
           <button class="animals-btn">Дізнатись більше</button></li>`
     )
     .join('');
+}
+
+moreBtn.addEventListener('click', handleClickMurcup);
+async function handleClickMurcup() {
+  page++;
+  try {
+    const data = await createAnimalsCards(page);
+    if (data && data.animals.length > 0) {
+      allAnimals.insertAdjacentHTML(
+        'beforeend',
+        createMarkupAnimals(data.animals)
+      );
+    }
+    if (allAnimals.children.length >= data.totalItems) {
+      moreBtn.disabled = true;
+      moreBtn.classList.add('disabled');
+    }
+  } catch {}
 }
