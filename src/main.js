@@ -9,4 +9,3 @@ import './js/Succes/succes.js';
 import './js/Pets/pets.js';
 import './js/footer/footer.js';
 import './js/Order-modal/order-modal.js';
-// import './js/';
