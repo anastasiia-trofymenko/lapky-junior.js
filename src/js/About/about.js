@@ -16,4 +16,4 @@ new Swiper('.swiper', {
   grabCursor: true,
   allowTouchMove: true,
   watchOverflow: true,
-})
+});
