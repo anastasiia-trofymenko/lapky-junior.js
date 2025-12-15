@@ -42,6 +42,14 @@ desktopQuery.addEventListener('change', e => {
   }
 });
 
+document.addEventListener('click', e => {
+  const logoLink = e.target.closest('.icon-header-btn');
+  if (!logoLink) return;
+
+  refs.modalMenu?.classList.remove('is-open');
+  document.body.style.overflow = '';
+});
+
 
 refs.header.addEventListener('click', e => {
   const link = e.target.closest('a[href^="#"]');
