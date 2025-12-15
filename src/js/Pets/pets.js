@@ -44,7 +44,7 @@ function createMarkupCategories(arr) {
 }
 let page = 1;
 let limit = 0;
-let categoryId = 'animals';
+let categoryId = null;
 function handleDeskChange(e) {
   if (e.matches) {
     return (limit = 9);
@@ -60,10 +60,9 @@ async function createAnimalsCards() {
     params: {
       page,
       limit,
-      // categoryId,
+      categoryId,
     },
   });
-  console.log(data);
 
   return data;
 }
@@ -116,13 +115,23 @@ listCategories.addEventListener('click', handleClickCategoriesMurkup);
 
 async function handleClickCategoriesMurkup(event) {
   event.preventDefault();
-  if (
-    !(event.target === event.currentTarget) &&
-    !(event.target.textContent === 'Всі')
-  ) {
-    activeCategories.classList.remove('active');
-
-    const categoryId = event.target.dataset.id;
+  activeCategories.classList.remove('active');
+  const removeActive = listCategories.querySelectorAll('.active');
+  removeActive.forEach(child => {
+    child.classList.remove('active');
+  });
+  page = 1;
+  moreBtn.disabled = false;
+  moreBtn.classList.remove('disabled');
+  event.target.classList.add('active');
+  if (!(event.target === event.currentTarget)) {
     allAnimals.innerHTML = '';
+    categoryId = event.target.dataset.id;
+
+    const data = await createAnimalsCards(categoryId);
+    allAnimals.insertAdjacentHTML(
+      'beforeend',
+      createMarkupAnimals(data.animals)
+    );
   }
 }
