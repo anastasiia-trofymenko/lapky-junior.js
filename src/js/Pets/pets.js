@@ -14,6 +14,15 @@ const allAnimals = document.querySelector('.animals-list');
 const listCategories = document.querySelector('.categories-list');
 const moreBtn = document.querySelector('.loadmore-btn');
 const activeCategories = document.querySelector('.categories-text');
+const loader = document.querySelector('span');
+
+function showLoader() {
+  loader.classList.remove('hidden');
+}
+
+function hideLoader() {
+  loader.classList.add('hidden');
+}
 
 async function createCategories() {
   const { data } = await axios(`${BASE_URL}${CATECORIES_URL}`);
@@ -23,14 +32,6 @@ async function createCategories() {
 createCategories().then(data => {
   categories.insertAdjacentHTML('afterbegin', createMarkupCategories(data));
 });
-// .catch(error => {
-//   iziToast.error({
-//     message:
-//       'Sorry, there are no images matching your search query. Please try again!',
-//     position: 'topRight',
-//     color: 'red',
-//   });
-// });
 
 function createMarkupCategories(arr) {
   const sortedArr = arr.toSorted((a, b) => b._id.localeCompare(a._id));
@@ -44,7 +45,7 @@ function createMarkupCategories(arr) {
 }
 let page = 1;
 let limit = 0;
-let categoryId = 'animals';
+let categoryId = null;
 function handleDeskChange(e) {
   if (e.matches) {
     return (limit = 9);
@@ -60,10 +61,9 @@ async function createAnimalsCards() {
     params: {
       page,
       limit,
-      // categoryId,
+      categoryId,
     },
   });
-  console.log(data);
 
   return data;
 }
@@ -75,8 +75,13 @@ createAnimalsCards()
       createMarkupAnimals(data.animals)
     );
   })
-  .catch(error => {});
-//
+  .catch(error =>
+    iziToast.error({
+      message: 'Упс, щось пішло не так. Спробуйте ще раз!',
+      position: 'topRight',
+      color: 'red',
+    })
+  );
 
 function createMarkupAnimals(arr) {
   return arr
@@ -95,8 +100,9 @@ function createMarkupAnimals(arr) {
 }
 
 moreBtn.addEventListener('click', handleClickMurcup);
-async function handleClickMurcup() {
+async function handleClickMurcup(event) {
   page++;
+  showLoader();
   try {
     const data = await createAnimalsCards(page);
     if (data && data.animals.length > 0) {
@@ -104,18 +110,41 @@ async function handleClickMurcup() {
         'beforeend',
         createMarkupAnimals(data.animals)
       );
+      const card = document.querySelector('.animals-item');
+
+      const info = card.getBoundingClientRect();
+      const height = info.height;
+      window.scrollBy({
+        left: 0,
+        top: height * 0.6,
+        behavior: 'smooth',
+      });
+      event.target.blur();
+      hideLoader();
     }
     if (allAnimals.children.length >= data.totalItems) {
       moreBtn.disabled = true;
       moreBtn.classList.add('disabled');
+      iziToast.info({
+        message: 'Всі хвостики вже тут',
+        position: 'topRight',
+        color: 'green',
+      });
     }
-  } catch {}
+  } catch (error) {
+    iziToast.error({
+      message: 'Упс, щось пішло не так. Спробуйте ще раз!',
+      position: 'topRight',
+      color: 'red',
+    });
+  }
 }
 
 listCategories.addEventListener('click', handleClickCategoriesMurkup);
 
 async function handleClickCategoriesMurkup(event) {
   event.preventDefault();
+  showLoader();
   activeCategories.classList.remove('active');
   const removeActive = listCategories.querySelectorAll('.active');
   removeActive.forEach(child => {
@@ -129,10 +158,20 @@ async function handleClickCategoriesMurkup(event) {
     allAnimals.innerHTML = '';
     categoryId = event.target.dataset.id;
 
-    const data = await createAnimalsCards(categoryId);
-    allAnimals.insertAdjacentHTML(
-      'beforeend',
-      createMarkupAnimals(data.animals)
-    );
+    try {
+      const data = await createAnimalsCards(categoryId);
+      allAnimals.insertAdjacentHTML(
+        'beforeend',
+        createMarkupAnimals(data.animals)
+      );
+      hideLoader();
+    } catch (error) {
+      iziToast.error({
+        message: 'Упс, щось пішло не так. Спробуйте ще раз!',
+        position: 'topRight',
+        color: 'red',
+      });
+      hideLoader();
+    }
   }
 }
