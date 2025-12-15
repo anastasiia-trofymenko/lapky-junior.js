@@ -21,7 +21,7 @@
 /* ===== Image ===== */
 .image-wrapper {
   position: relative;
-  border-radius: 16px;
+  /* border-radius: 16px; */
   overflow: hidden;
 }
 
@@ -136,4 +136,6 @@
     padding: 0;
     line-height: 150%;
   }
+
+  
 }
