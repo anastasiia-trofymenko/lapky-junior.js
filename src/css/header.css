@@ -51,13 +51,19 @@
 .header-modal-menu {
   position: fixed;
   inset: 0;
+  top: 0;
+  width: 100%;
   background-color: #f6f3ee;
 
   display: flex;
   flex-direction: column;
-  padding: 0 24px;
+  padding: 24px;
+  box-sizing: border-box;
   min-height: 100vh;
   height: 100dvh;
+
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 
   opacity: 0;
   visibility: hidden;
