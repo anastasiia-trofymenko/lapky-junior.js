@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.addEventListener('click', e => {
-    if (e.target.closest('.hero-button')) {
+    if (e.target.closest('.modalAdoptBtn')) {
       openOrderModal();
     }
   });
