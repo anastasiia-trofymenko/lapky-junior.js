@@ -23,6 +23,14 @@ function showLoader() {
 function hideLoader() {
   loader.classList.add('hidden');
 }
+function showmoreBtn() {
+  moreBtn.classList.remove('hidden');
+}
+
+function hidemoreBtn() {
+  moreBtn.classList.add('hidden');
+}
+hidemoreBtn();
 
 async function createCategories() {
   const { data } = await axios(`${BASE_URL}${CATECORIES_URL}`);
@@ -74,6 +82,7 @@ createAnimalsCards()
       'beforeend',
       createMarkupAnimals(data.animals)
     );
+    showmoreBtn();
   })
   .catch(error =>
     iziToast.error({
@@ -102,6 +111,7 @@ function createMarkupAnimals(arr) {
 moreBtn.addEventListener('click', handleClickMurcup);
 async function handleClickMurcup(event) {
   page++;
+  hidemoreBtn();
   showLoader();
   try {
     const data = await createAnimalsCards(page);
@@ -121,6 +131,7 @@ async function handleClickMurcup(event) {
       });
       event.target.blur();
       hideLoader();
+      showmoreBtn();
     }
     if (allAnimals.children.length >= data.totalItems) {
       moreBtn.disabled = true;
@@ -144,18 +155,21 @@ listCategories.addEventListener('click', handleClickCategoriesMurkup);
 
 async function handleClickCategoriesMurkup(event) {
   event.preventDefault();
+  hidemoreBtn();
   showLoader();
-  activeCategories.classList.remove('active');
-  const removeActive = listCategories.querySelectorAll('.active');
-  removeActive.forEach(child => {
-    child.classList.remove('active');
-  });
+
   page = 1;
   moreBtn.disabled = false;
   moreBtn.classList.remove('disabled');
-  event.target.classList.add('active');
+
   if (!(event.target === event.currentTarget)) {
     allAnimals.innerHTML = '';
+    activeCategories.classList.remove('active');
+    const removeActive = listCategories.querySelectorAll('.active');
+    removeActive.forEach(child => {
+      child.classList.remove('active');
+    });
+    event.target.classList.add('active');
     categoryId = event.target.dataset.id;
 
     try {
@@ -165,6 +179,7 @@ async function handleClickCategoriesMurkup(event) {
         createMarkupAnimals(data.animals)
       );
       hideLoader();
+      showmoreBtn();
     } catch (error) {
       iziToast.error({
         message: 'Упс, щось пішло не так. Спробуйте ще раз!',
@@ -172,6 +187,7 @@ async function handleClickCategoriesMurkup(event) {
         color: 'red',
       });
       hideLoader();
+      showmoreBtn();
     }
   }
 }
