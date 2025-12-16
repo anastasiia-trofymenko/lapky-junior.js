@@ -1,0 +1,30 @@
+<div class="backdrop" data-order-backdrop>
+  <div class="order-modal" data-order-modal>
+    <button type="button" class="order-modal__close">
+      <svg class="data-order-close" width="24" height="24">
+        <use href="./img/icons.svg#icon-close"></use>
+      </svg>
+    </button>
+
+    <h2 class="order-modal__title">Залишіть заявку на знайомство</h2>
+
+    <form class="order-form" id="orderForm">
+      <label class="order-form__field">
+        <span>Імʼя*</span>
+        <input name="name" required />
+      </label>
+
+      <label class="order-form__field">
+        <span>Телефон*</span>
+        <input name="phone" required />
+      </label>
+
+      <label class="order-form__field">
+        <span>Коментар</span>
+        <textarea name="comment"></textarea>
+      </label>
+
+      <button type="submit" class="order-form__submit">Надіслати</button>
+    </form>
+  </div>
+</div>
