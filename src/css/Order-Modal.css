@@ -1,0 +1,146 @@
+/* ===== BACKDROP ===== */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 16px;
+  z-index: 1;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* tablet */
+@media (min-width: 768px) {
+  .order-modal {
+    max-width: 480px;
+    padding: 32px;
+  }
+}
+
+/* desktop */
+@media (min-width: 1440px) {
+  .order-modal {
+    max-width: 520px;
+  }
+}
+
+.order-modal {
+  width: 100%;
+  max-width: 343px;
+  background-color: #f6f4f1;
+  border-radius: 8px;
+  padding: 64px 20px;
+  position: relative;
+
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+}
+
+/* ===== CLOSE ===== */
+.order-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* ===== TITLE ===== */
+.order-modal__title {
+  margin-bottom: 48px;
+  font-size: 36px;
+  display: block;
+  width: 295px;
+  margin: 0 auto 20px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: #02060a;
+}
+
+/* ===== FORM ===== */
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.order-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.order-form__submit {
+  margin-top: 8px;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 14px;
+  border: none;
+  background-color: #8c7a61;
+  color: #fff;
+  cursor: pointer;
+}
+
+.order-form__field span {
+  font-size: 12px;
+}
+
+/* ===== INPUTS ===== */
+.order-form input,
+.order-form textarea {
+  background-color: #eceae6;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+}
+
+.order-form textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+@media (min-width: 768px) {
+  .backdrop {
+    padding: 32px;
+  }
+
+  .order-modal {
+    max-width: 480px;
+    padding: 32px;
+  }
+
+  .order-modal__title {
+    font-size: 28px;
+  }
+
+  .order-form textarea {
+    min-height: 120px;
+  }
+}
+@media (min-width: 1440px) {
+  .order-modal {
+    max-width: 520px;
+  }
+
+  .order-modal__title {
+    font-size: 32px;
+  }
+}
