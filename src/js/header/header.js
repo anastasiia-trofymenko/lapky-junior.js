@@ -1,4 +1,11 @@
 'use strict';
+
+import {
+  lockScroll,
+  unlockScroll,
+  smoothScrollTo,
+} from '../utils/scroll-lock';
+
 const refs = {
   burgerBtn: document.querySelector('.header-burger-btn'),
   modalMenu: document.querySelector('.header-modal-menu'),
@@ -10,12 +17,12 @@ const refs = {
 
 function openMenu() {
   refs.modalMenu.classList.add('is-open');
-  document.body.style.overflow = 'hidden';
+  lockScroll();
 }
 
 function closeMenu() {
   refs.modalMenu.classList.remove('is-open');
-  document.body.style.overflow = '';
+  unlockScroll();
 }
 
 refs.burgerBtn.addEventListener('click', openMenu);
@@ -47,26 +54,24 @@ document.addEventListener('click', e => {
   if (!logoLink) return;
 
   refs.modalMenu?.classList.remove('is-open');
-  document.body.style.overflow = '';
+  unlockScroll();
 });
 
-
-refs.header.addEventListener('click', e => {
+document.addEventListener('click', e => {
   const link = e.target.closest('a[href^="#"]');
   if (!link) return;
 
   const targetId = link.getAttribute('href');
+  if (targetId === '#') return;
+
   const targetEl = document.querySelector(targetId);
   if (!targetEl) return;
 
   e.preventDefault();
 
-  const headerHeight = refs.header.offsetHeight;
-  const targetPosition =
-    targetEl.getBoundingClientRect().top + window.scrollY - headerHeight;
+  const headerHeight = refs.header?.offsetHeight || 0;
 
-  window.scrollTo({
-    top: targetPosition,
-    behavior: 'smooth',
-  });
+  smoothScrollTo(targetEl, headerHeight);
+
+  unlockScroll();
 });
