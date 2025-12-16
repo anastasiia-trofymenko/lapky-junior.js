@@ -107,6 +107,13 @@
   .swiper-slide img {
     height: 420px;
   }
+    .about-text {
+    left: 32px;
+    bottom: 32px;
+    max-width: 548px;
+    padding: 0;
+    line-height: 150%;
+  }
 }
 
 @media (min-width: 1440px) {
@@ -122,6 +129,7 @@
   .about-text {
     left: 63.5px;
     bottom: 64px;
+    max-width: 548px;
     padding: 0;
     line-height: 150%;
   }
