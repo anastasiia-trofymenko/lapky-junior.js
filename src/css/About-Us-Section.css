@@ -112,6 +112,7 @@
 @media (min-width: 1440px) {
   .About-Us-Section {
     max-width: 1312px;
+    margin: 0 auto;
   }
 
   .swiper-slide img {
