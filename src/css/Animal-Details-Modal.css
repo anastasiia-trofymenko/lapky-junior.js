@@ -11,6 +11,8 @@
   justify-content: center;
   align-items: center;
   opacity: 1;
+  padding: 0;
+  overflow-y: auto;
   transition: opacity 0.3s ease;
 }
 
@@ -24,7 +26,9 @@
   position: relative;
   border-radius: 8px;
   width: 335px;
+  max-height: calc(100vh - 40px);
   overflow-y: auto; /*можливість скролу модалки */
+  -webkit-overflow-scrolling: touch;
   animation: modalSlideIn 0.3s ease;
   background-color: #f6f4f1;
 }
