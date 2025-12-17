@@ -1,7 +1,7 @@
 <div class="backdrop" data-order-backdrop>
   <div class="order-modal" data-order-modal>
     <button type="button" class="order-modal__close">
-      <svg class="data-order-close" width="24" height="24">
+      <svg width="24" height="24">
         <use href="./img/icons.svg#icon-close"></use>
       </svg>
     </button>
@@ -10,18 +10,23 @@
 
     <form class="order-form" id="orderForm">
       <label class="order-form__field">
-        <span>Імʼя*</span>
-        <input name="name" required />
+        <span class="order-form__info">Імʼя*</span>
+        <input class="order-form__input" name="name" required />
       </label>
 
       <label class="order-form__field">
-        <span>Телефон*</span>
-        <input name="phone" required />
+        <span class="order-form__info">Телефон*</span>
+        <input
+          class="order-form__input"
+          class="is-error"
+          name="phone"
+          required
+        />
       </label>
 
       <label class="order-form__field">
-        <span>Коментар</span>
-        <textarea name="comment"></textarea>
+        <span class="order-form__info">Коментар</span>
+        <textarea class="order-form__comment" name="comment"></textarea>
       </label>
 
       <button type="submit" class="order-form__submit">Надіслати</button>

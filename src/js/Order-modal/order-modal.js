@@ -1,60 +1,113 @@
+import Swal from 'sweetalert2';
+
 document.addEventListener('DOMContentLoaded', () => {
   const backdrop = document.querySelector('[data-order-backdrop]');
   const modal = document.querySelector('[data-order-modal]');
-  const closeBtn = document.querySelector('[data-order-close]');
-  const form = document.querySelector('#orderForm');
+  const closeBtn = document.querySelector('.order-modal__close');
+  const form = document.getElementById('orderForm');
+  const openBtn = document.getElementById('modalAdoptBtn');
 
-  // 🔍 ДІАГНОСТИКА
-  console.log({
-    backdrop,
-    modal,
-    closeBtn,
-    form,
-  });
+  if (!backdrop || !modal || !form) return;
 
-  if (!backdrop || !modal) {
-    console.error(' Order modal not found in DOM');
-    return;
-  }
+  let currentAnimalId = null;
 
-  function openOrderModal() {
+  /* ========= OPEN ========= */
+  function openModal(animalId) {
+    currentAnimalId = animalId;
     backdrop.classList.add('is-open');
     document.body.classList.add('modal-open');
   }
 
-  function closeOrderModal() {
+  /* ========= CLOSE ========= */
+  function closeModal() {
     backdrop.classList.remove('is-open');
     document.body.classList.remove('modal-open');
-    form?.reset();
+    form.reset();
+    currentAnimalId = null;
   }
 
-  //  НЕ відкриваємо автоматично
-  // openOrderModal(); ← ВАЖЛИВО: ЦЕ ВИДАЛИТИ
+  /* ========= OPEN FROM BUTTON ========= */
+  openBtn?.addEventListener('click', () => {
+    openModal(123); // підставити animalId
+  });
 
-  //  ВІДКРИТТЯ ДЛЯ ТЕСТУ З КОНСОЛІ
-  window.openOrderModal = openOrderModal;
+  /* ========= CLOSE EVENTS ========= */
 
-  // Закриття
-  closeBtn?.addEventListener('click', closeOrderModal);
+  closeBtn.addEventListener('click', closeModal);
 
   backdrop.addEventListener('click', e => {
-    if (e.target === backdrop) closeOrderModal();
+    if (e.target === backdrop) {
+      closeModal();
+    }
   });
 
   window.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeOrderModal();
-  });
-
-  // Сабміт
-  form?.addEventListener('submit', e => {
-    e.preventDefault();
-    alert('submit test');
-    closeOrderModal();
-  });
-
-  document.addEventListener('click', e => {
-    if (e.target.closest('.modalAdoptBtn')) {
-      openOrderModal();
+    if (e.key === 'Escape' && backdrop.classList.contains('is-open')) {
+      closeModal();
     }
   });
+
+  /* ========= SUBMIT ========= */
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    const data = {
+      name: form.name.value.trim(),
+      phone: form.phone.value.trim(),
+      comment: form.comment.value.trim(),
+      animalId: currentAnimalId,
+    };
+
+    try {
+      const response = await fetch('/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Request failed');
+      }
+
+      // PUSH-ПОВІДОМЛЕННЯ
+      Swal.fire({
+        icon: 'success',
+        title: 'Успіх',
+        text: 'Заявку надіслано',
+      });
+
+      closeModal();
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Помилка',
+        text: 'Спробуйте пізніше',
+      });
+    }
+  });
+
+  /* ========= EXPORT (для іншої модалки) ========= */
+  window.openOrderModal = openModal;
 });
+
+// function showError(input, message) {
+//   input.classList.add('is-error');
+
+//   let error = input.parentElement.querySelector('.error-text');
+//   if (!error) {
+//     error = document.createElement('span');
+//     error.className = 'error-text';
+//     input.parentElement.appendChild(error);
+//   }
+
+//   error.textContent = message;
+// }
+
+// function clearError(input) {
+//   input.classList.remove('is-error');
+
+//   const error = input.parentElement.querySelector('.error-text');
+//   if (error) error.remove();
+// }
