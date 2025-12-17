@@ -23,6 +23,7 @@
   line-height: 1.2;
   letter-spacing: -0.01em;
   color: #fff;
+  max-width: 335px;
 }
 
 .hero-descr {
@@ -33,6 +34,7 @@
   font-size: 16px;
   line-height: 1.5;
   color: #fff;
+  max-width: 335px;
 }
 
 .hero-button {
@@ -51,7 +53,7 @@
 
 .hero-button:hover {
   background-color: #eee9e3;
-
+  border: 1px solid #88765c;
   color: #02060a;
 }
 
@@ -77,11 +79,11 @@
   }
 
   .hero-title {
-    width: 622px;
+    max-width: 622px;
   }
 
   .hero-descr {
-    width: 512px;
+    max-width: 512px;
     margin-top: 24px;
     margin-bottom: 32px;
   }
@@ -91,6 +93,7 @@
   .hero-container {
     padding-top: 128px;
     padding-bottom: 412px;
+    padding-left: 64px;
 
     background-image: linear-gradient(
         to right,
