@@ -89,6 +89,9 @@
   border: none;
   cursor: pointer;
   transition: transform 0.3s ease;
+  fill: #02060a;
+  stroke-width: 1px;
+  stroke: #02060a;
 }
 
 .header-close-btn:hover {
