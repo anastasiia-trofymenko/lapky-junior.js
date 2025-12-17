@@ -64,6 +64,12 @@ body.modal-open {
   stroke: #02060a;
 }
 
+.order-modal__close:hover,
+.order-modal__close:focus {
+  transform: scale(1.15);
+  stroke: #88765c;
+}
+
 /* ===== TITLE ===== */
 .order-modal__title {
   /* margin-bottom: 48px; */

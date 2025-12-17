@@ -1,4 +1,7 @@
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
+
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   const backdrop = document.querySelector('[data-order-backdrop]');
@@ -72,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // PUSH-ПОВІДОМЛЕННЯ
-      Swal.fire({
+      iziToast.success({
         icon: 'success',
         title: 'Успіх',
         text: 'Заявку надіслано',
@@ -80,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       closeModal();
     } catch (error) {
-      Swal.fire({
+      iziToast.error({
         icon: 'error',
         title: 'Помилка',
         text: 'Спробуйте пізніше',
