@@ -2,7 +2,7 @@
 .backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.25);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,15 +59,24 @@ body.modal-open {
   border: none;
   background: transparent;
   cursor: pointer;
+  fill: #fff;
+  stroke-width: 1px;
+  stroke: #02060a;
+}
+
+.order-modal__close:hover,
+.order-modal__close:focus {
+  transform: scale(1.15);
+  stroke: #88765c;
 }
 
 /* ===== TITLE ===== */
 .order-modal__title {
-  margin-bottom: 48px;
+  /* margin-bottom: 48px; */
   font-size: 36px;
   display: block;
-  width: 295px;
-  margin: 0 auto 20px;
+  max-width: 295px;
+  margin: auto 20px;
   line-height: 1.2;
   letter-spacing: -0.01em;
   text-align: center;
@@ -79,6 +88,7 @@ body.modal-open {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  margin-top: 48px;
 }
 
 .order-form__field {
@@ -90,31 +100,128 @@ body.modal-open {
 .order-form__submit {
   margin-top: 8px;
   padding: 14px;
-  font-size: 16px;
-  border-radius: 14px;
+  font-size: 14px;
+  border-radius: px;
   border: none;
-  background-color: #8c7a61;
+  border-radius: 8px;
+  background-color: #88765c;
   color: #fff;
   cursor: pointer;
+  border: 1px solid #88765c;
 }
 
-.order-form__field span {
-  font-size: 12px;
+.order-form__submit:hover {
+  color: #02060a;
+  background-color: #eee9e3;
+}
+
+.order-form__submit:focus {
+  color: #02060a;
+  box-shadow: inset 0 4px 6px -2px rgba(0, 0, 0, 0.03),
+    inset 0 12px 16px -4px rgba(0, 0, 0, 0.08);
+  background-color: #eee9e3;
+}
+
+.order-form__info {
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #02060a;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+}
+
+.order-form__comment {
+  height: auto;
+  min-height: 120px;
+  resize: none;
+
+  padding: 12px 14px;
+  background-color: #eee9e3;
+  border: 1px solid transparent;
+  border-radius: 16px;
 }
 
 /* ===== INPUTS ===== */
-.order-form input,
-.order-form textarea {
-  background-color: #eceae6;
-  border: none;
+.order-form__input,
+.order-form__comment {
+  background-color: rgba(2, 6, 10, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0);
   border-radius: 12px;
-  padding: 12px 14px;
+  padding: 8px 12px;
   font-size: 14px;
+  color: rgba(2, 6, 10, 0.6);
+  outline: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.order-form textarea {
-  min-height: 100px;
-  resize: none;
+.order-form__input:hover,
+.order-form__input:focus {
+  border: 1px solid #88765c;
+  border-radius: 12px;
+  background: #eee9e3;
+}
+
+.order-form__comment:hover,
+.order-form__comment:focus {
+  border: 1px solid #88765c;
+  border-radius: 12px;
+  background: #eee9e3;
+}
+
+/* *,
+*::before,
+*::after {
+  box-sizing: border-box;
+} */
+
+@media (min-width: 768px) {
+  /* ===== MODAL SIZE ===== */
+  .order-modal {
+    width: 100%;
+    max-width: 704px;
+    padding: 64px 20px;
+    box-sizing: border-box;
+  }
+
+  /* ===== TITLE ===== */
+  .order-modal__title {
+    max-width: 640px;
+    margin: 0 auto 48px;
+    font-size: 36px;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  /* ===== BUTTON ===== */
+  .order-form__submit {
+    width: 240px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    font-size: 14px;
+    border-radius: 8px;
+    background-color: #88765c;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #88765c;
+  }
+}
+
+@media (min-width: 1440px) {
+  .order-modal {
+    max-width: 768px;
+    padding: 64px 80px 56px;
+  }
+
+  .order-modal__title {
+    max-width: 520px;
+    font-size: 36px;
+    white-space: normal;
+  }
+
+  .order-form__submit {
+    width: 260px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -122,25 +229,20 @@ body.modal-open {
     padding: 32px;
   }
 
-  .order-modal {
-    max-width: 480px;
-    padding: 32px;
-  }
-
   .order-modal__title {
-    font-size: 28px;
+    font-size: 36px;
   }
 
-  .order-form textarea {
+  .order-form__comment {
     min-height: 120px;
   }
 }
 @media (min-width: 1440px) {
   .order-modal {
-    max-width: 520px;
+    max-width: 768px;
   }
 
-  .order-modal__title {
+  /* .order-modal__title {
     font-size: 32px;
-  }
+  } */
 }
