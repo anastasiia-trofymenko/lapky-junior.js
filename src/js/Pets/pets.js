@@ -3,6 +3,9 @@ import iziToast from 'izitoast';
 // Додатковий імпорт стилів
 import 'izitoast/dist/css/iziToast.min.css';
 
+//додання логіки модалки
+import { openPetModal } from '../Animal-details/animal-detalis';
+
 const BASE_URL = 'https://paw-hut.b.goit.study/api/';
 const CATECORIES_URL = 'categories';
 const ANIMALS_URL = 'animals';
@@ -92,21 +95,38 @@ createAnimalsCards()
     })
   );
 
+// Сховище для тваринок
+const animalsStore = new Map();
+
+// додаю зберігання об'єкту тваринки з id
 function createMarkupAnimals(arr) {
+  arr.forEach(animal => {
+    animalsStore.set(animal._id, animal);
+  });
   return arr
     .map(
-      ({ image, name, species, categories, age, gender, behavior }) =>
+      ({ _id, image, name, species, categories, age, gender, behavior }) =>
         `<li class="animals-item"><img class="animals-img" src="${image}" alt="${species}"/><div class="animals-item-container"><p class="animals-subtitle">${species}</p><h2 class="animals-title">${name}</h2><div class="animals-sublist">${categories
           .map(({ name }) => `<h3 class="animals-categories">${name}</h3>`)
           .join(
             ''
           )}</div><div class="animals-textlist"><p class="animals-subtitle">${age}</p><p class="animals-subtitle">${gender}</p></div>
           <p class="animals-text">${behavior}</p></div>
-          
-          <button class="animals-btn">Дізнатись більше</button></li>`
+
+          <button type= "button" class="animals-btn" data-animal-id="${_id}">Дізнатись більше</button></li>`
     )
     .join('');
 }
+
+// логіка модалки при кліку на кнопку
+allAnimals.addEventListener('click', event => {
+  if (event.target.classList.contains('animals-btn')) {
+    const animalId = event.target.dataset.animalId;
+    if (animalId) {
+      openPetModal(animalId, animalsStore);
+    }
+  }
+});
 
 moreBtn.addEventListener('click', handleClickMurcup);
 async function handleClickMurcup(event) {

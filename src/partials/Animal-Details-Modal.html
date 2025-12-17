@@ -1,0 +1,45 @@
+<div class="modal-backdrop hidden" id="petModalBackdrop">
+  <div class="modal-container" id="petModalContainer">
+    <button class="modal-close-btn" id="modalCloseBtn" type="button">
+      <svg class="close-svg" width="24" height="24">
+        <use href="../img/icons.svg#icon-close"></use>
+      </svg>
+    </button>
+
+    <div class="modal-content">
+      <div class="modal-image-wrapper">
+        <img class="modal-image" id="modalImage" src="" alt="" />
+      </div>
+
+      <div class="modal-info">
+        <div class="modal-header">
+          <span class="modal-species" id="modalSpecies"></span>
+          <h2 class="modal-name" id="modalName"></h2>
+          <p class="modal-age-gender">
+            <span id="modalAge"></span>
+            <span id="modalGender"></span>
+          </p>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">Опис:</h3>
+          <p class="modal-description" id="modalDescription"></p>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">Здоров'я:</h3>
+          <p class="modal-health" id="modalHealth"></p>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">Поведінка:</h3>
+          <p class="modal-behavior" id="modalBehavior"></p>
+        </div>
+
+        <button class="modal-adopt-btn" id="modalAdoptBtn" type="button">
+          Взяти додому
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

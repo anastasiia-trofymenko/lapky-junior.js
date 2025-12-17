@@ -1,0 +1,258 @@
+/* Modal Backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.modal-backdrop.hidden {
+  display: none;
+  opacity: 0;
+}
+
+/* Modal Container */
+.modal-container {
+  position: relative;
+  border-radius: 8px;
+  width: 335px;
+  height: 1012px;
+  overflow-y: auto; /*можливість скролу модалки */
+  animation: modalSlideIn 0.3s ease;
+  background-color: #f6f4f1;
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-close-btn svg {
+  fill: #fff;
+  stroke-width: 1px;
+  stroke: #02060a;
+}
+
+/* Modal Content */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 64px 20px;
+}
+
+.modal-image-wrapper {
+  flex: 0 0 auto;
+  width: 100%;
+  width: 295px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.modal-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Modal Info */
+.modal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.modal-species {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #02060a;
+  padding-bottom: 8px;
+}
+
+.modal-name {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #02060a;
+  padding-bottom: 8px;
+}
+
+.modal-age-gender {
+  font-family: 'IBM Plex Sans', sans-serif;
+
+  font-size: 12px;
+  line-height: 1.5;
+  color: #02060a;
+  display: flex;
+  gap: 16px;
+}
+
+.modal-age-gender span {
+  position: relative;
+}
+
+/* Modal Sections */
+.modal-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-section-title {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #02060a;
+}
+
+.modal-description,
+.modal-health,
+.modal-behavior {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #02060a;
+}
+
+/* Adopt Button */
+.modal-adopt-btn {
+  border: 1px solid #88765c;
+  border-radius: 8px;
+  padding: 12px 24px;
+  width: 295px;
+  height: 45px;
+  background-color: #88765c;
+  border: none;
+  padding: 12px auto;
+
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #fff;
+  cursor: pointer;
+  /* transition: background-color 0.3s ease, transform 0.2s ease; */
+  align-self: flex-start;
+}
+
+.modal-adopt-btn:hover {
+  color: #02060a;
+  background-color: #eee9e3;
+}
+
+.modal-adopt-btn:focus {
+  color: #02060a;
+  box-shadow: inset 0 4px 6px -2px rgba(0, 0, 0, 0.03),
+    inset 0 12px 16px -4px rgba(0, 0, 0, 0.08);
+  background-color: #eee9e3;
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* tablet */
+@media (min-width: 768px) {
+  .modal-container {
+    width: 704px;
+    height: 685px;
+  }
+
+  .modal-content {
+    flex-direction: row;
+    padding: 64px 32px;
+  }
+
+  .modal-image-wrapper {
+    width: 304px;
+    height: 450px;
+  }
+
+  .modal-image {
+    width: 304px;
+    height: 450px;
+  }
+}
+
+/* desktop */
+@media (min-width: 1440px) {
+  .modal-container {
+    width: 1312px;
+    height: 650px;
+  }
+
+  .modal-content {
+    padding: 64px;
+  }
+
+  .modal-image-wrapper {
+    width: 576px;
+    height: 450px;
+  }
+
+  .modal-image {
+    width: 576px;
+    height: 450px;
+  }
+
+  .modal-species {
+    font-size: 14px;
+  }
+
+  .modal-name {
+    font-size: 40px;
+  }
+
+  .modal-age-gender {
+    font-size: 14px;
+  }
+
+  .modal-section-title {
+    font-size: 16px;
+  }
+
+  .modal-description,
+  .modal-health,
+  .modal-behavior {
+    font-size: 16px;
+  }
+
+  .modal-adopt-btn {
+    padding: 12px auto;
+    width: 576px;
+    height: 48px;
+    font-size: 16px;
+  }
+}
