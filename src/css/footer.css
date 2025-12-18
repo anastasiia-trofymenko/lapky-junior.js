@@ -4,6 +4,8 @@
 }
 .footer-desc {
   padding: 48px 20px;
+  display: block;
+  margin: auto;
 }
 .footer-container {
   display: flex;
