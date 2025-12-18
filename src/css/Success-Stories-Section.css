@@ -1,22 +1,24 @@
+/* ===== Success Stories Section ===== */
+
 .success-stories {
-  background-color: white;
+  background-color: #ffffff;
 }
 
+/* Title block */
 .stories-title {
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
   flex-direction: column;
+  align-items: center;
 }
 
 .success-stories__title {
+  margin-bottom: 24px;
   font-weight: 700;
   font-size: 41px;
   line-height: 1.2;
   letter-spacing: -0.01em;
   text-align: center;
   color: #02060a;
-  margin-bottom: 24px;
 }
 
 .success-stories__subtitle {
@@ -27,34 +29,29 @@
   color: #02060a;
 }
 
+/* Card */
 .story-card {
   width: 100%;
 }
 
-/* .story-rating {
+/* Rating */
+.story-rating {
   display: flex;
   gap: 4px;
-  margin-bottom: 12px;
-  margin-top: 32px;
-} */
-
-.star-rating {
-  --star-size: 16px;
-  --star-color: #d9d9d9;
-  --star-background: #1c1c1c;
-  margin-bottom: 12px;
+  margin: 32px 0 12px;
 }
 
-/* .story-rating .star {
+.story-rating .star {
   width: 20px;
   height: 19px;
   fill: #1c1c1c;
-} */
+}
 
+/* Text */
 .story-text {
+  margin-bottom: 32px;
   font-size: 18px;
   line-height: 1.5;
-  margin-bottom: 32px;
 }
 
 .story-author {
@@ -62,14 +59,16 @@
   font-weight: 600;
 }
 
-/* controls */
+/* ===== Slider Controls ===== */
+
 .slider-controls {
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 64px;
 }
 
+/* Pagination dots */
 .slider-pagination {
   display: flex;
   gap: 6px;
@@ -87,29 +86,33 @@
   background-color: #1c1c1c;
 }
 
+/* Buttons */
 .slider-buttons {
   display: flex;
   gap: 16px;
 }
 
 .slider-btn {
-  border: 1px solid #c3b49d;
-  border-radius: 8px;
-  padding: 12px;
-  width: 48px;
-  height: 48px;
-  background-color: #eee9e3;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 48px;
+  height: 48px;
+  padding: 12px;
+
+  border: 1px solid #c3b49d;
+  border-radius: 8px;
+  background-color: #eee9e3;
+
   cursor: pointer;
 }
 
 .slider-icon {
   width: 20px;
   height: 20px;
-  stroke: #1c1c1c;
   fill: none;
+  stroke: #1c1c1c;
 }
 
 .slider-btn:hover {
@@ -125,27 +128,29 @@
   pointer-events: none;
 }
 
+/* ===== Swiper ===== */
+
+.success-stories-swiper {
+  width: 100%;
+  overflow: hidden;
+}
+
 .swiper-wrapper {
   display: flex;
 }
 
-.success-stories-swiper {
-  width: 100%;
-
-  overflow: hidden;
-}
-
-/* ========== TABLET ≥ 768px ========== */
+/* ===== Tablet ≥ 768px ===== */
 @media (min-width: 768px) {
   .success-stories__title {
     font-size: 36px;
   }
-  .story-card{
+
+  .story-card {
     max-width: 100%;
   }
 }
 
-/* ========== DESKTOP ≥ 1400px ========== */
+/* ===== Desktop ≥ 1440px ===== */
 @media (min-width: 1440px) {
   .success-stories__title {
     font-size: 48px;
@@ -162,8 +167,8 @@
   .story-author {
     font-size: 16px;
   }
-  .story-card{
-    width: 100%;
+
+  .story-card {
     max-width: 920px;
   }
 }
