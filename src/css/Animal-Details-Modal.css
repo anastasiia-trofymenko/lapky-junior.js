@@ -70,6 +70,7 @@
 .modal-content {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 32px;
   padding: 64px 20px;
 }
@@ -102,7 +103,7 @@
   font-size: 12px;
   line-height: 1.5;
   color: #02060a;
-  padding-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .modal-name {
@@ -112,7 +113,7 @@
   line-height: 1.2;
   letter-spacing: -0.01em;
   color: #02060a;
-  padding-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .modal-age-gender {
@@ -258,12 +259,10 @@ body.modal-open {
 
   .modal-image-wrapper {
     width: 576px;
-    height: 450px;
   }
 
   .modal-image {
     width: 576px;
-    height: 450px;
   }
 
   .modal-species {
