@@ -11,22 +11,31 @@
     <form class="order-form" id="orderForm">
       <label class="order-form__field">
         <span class="order-form__info">Імʼя*</span>
-        <input class="order-form__input" name="name" required />
+        <input
+          class="order-form__input"
+          name="name"
+          placeholder="Ім'я"
+          required
+        />
       </label>
 
       <label class="order-form__field">
         <span class="order-form__info">Телефон*</span>
         <input
           class="order-form__input"
-          class="is-error"
           name="phone"
+          placeholder="380"
           required
         />
       </label>
 
       <label class="order-form__field">
         <span class="order-form__info">Коментар</span>
-        <textarea class="order-form__comment" name="comment"></textarea>
+        <textarea
+          class="order-form__comment"
+          name="comment"
+          placeholder="Напишіть ваш коментар"
+        ></textarea>
       </label>
 
       <button type="submit" class="order-form__submit">Надіслати</button>

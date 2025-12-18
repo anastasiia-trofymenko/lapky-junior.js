@@ -1,4 +1,5 @@
-// import Swal from 'sweetalert2';
+import { lockScroll, unlockScroll } from '../utils/scroll-lock.js';
+import { createOrder } from '../../api/orders.js';
 
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
@@ -8,9 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const modal = document.querySelector('[data-order-modal]');
   const closeBtn = document.querySelector('.order-modal__close');
   const form = document.getElementById('orderForm');
-  const openBtn = document.getElementById('modalAdoptBtn');
+  const petsSection = document.getElementById('pets-list-section');
 
-  if (!backdrop || !modal || !form) return;
+  if (!backdrop || !modal || !form || !petsSection) return;
 
   let currentAnimalId = null;
 
@@ -18,30 +19,31 @@ document.addEventListener('DOMContentLoaded', () => {
   function openModal(animalId) {
     currentAnimalId = animalId;
     backdrop.classList.add('is-open');
-    document.body.classList.add('modal-open');
+    lockScroll();
   }
 
   /* ========= CLOSE ========= */
   function closeModal() {
     backdrop.classList.remove('is-open');
-    document.body.classList.remove('modal-open');
+    unlockScroll();
     form.reset();
     currentAnimalId = null;
   }
 
-  /* ========= OPEN FROM BUTTON ========= */
-  openBtn?.addEventListener('click', () => {
-    openModal(123); // підставити animalId
+  /* ========= OPEN FROM PET CARD ========= */
+  petsSection.addEventListener('click', e => {
+    const btn = e.target.closest('[data-animal-id]');
+    if (!btn) return;
+
+    const animalId = btn.dataset.animalId;
+    openModal(animalId);
   });
 
   /* ========= CLOSE EVENTS ========= */
-
   closeBtn.addEventListener('click', closeModal);
 
   backdrop.addEventListener('click', e => {
-    if (e.target === backdrop) {
-      closeModal();
-    }
+    if (e.target === backdrop) closeModal();
   });
 
   window.addEventListener('keydown', e => {
@@ -50,47 +52,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ========= SUBMIT ========= */
   form.addEventListener('submit', async e => {
     e.preventDefault();
 
+    const name = form.name.value.trim();
+    const rawPhone = form.phone.value.trim();
+    const phone = rawPhone.replace(/\D/g, '');
+    const comment = form.comment.value.trim();
+
+    if (!name || !phone) {
+      iziToast.error({
+        message: 'Заповніть обовʼязкові поля',
+        position: 'topRight',
+      });
+      return;
+    }
+
+    if (phone.length !== 12) {
+      iziToast.error({
+        message: 'Телефон має формат 380XXXXXXXXX',
+        position: 'topRight',
+      });
+      return;
+    }
+
+    if (!currentAnimalId) {
+      iziToast.error({
+        message: 'Не обрано тварину',
+        position: 'topRight',
+      });
+      return;
+    }
+
     const data = {
-      name: form.name.value.trim(),
-      phone: form.phone.value.trim(),
-      comment: form.comment.value.trim(),
+      name,
+      phone,
+      comment,
       animalId: currentAnimalId,
     };
 
     try {
-      const response = await fetch('/orders', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+      await createOrder(data);
 
-      if (!response.ok) {
-        throw new Error('Request failed');
-      }
-
-      // PUSH-ПОВІДОМЛЕННЯ
       iziToast.success({
-        icon: 'success',
-        title: 'Успіх',
-        text: 'Заявку надіслано',
+        message: 'Заявку надіслано',
+        position: 'topRight',
       });
 
       closeModal();
     } catch (error) {
       iziToast.error({
-        icon: 'error',
-        title: 'Помилка',
-        text: 'Спробуйте пізніше',
+        message: error.message || 'Помилка сервера',
+        position: 'topRight',
       });
     }
   });
 
-  /* ========= EXPORT (для іншої модалки) ========= */
+  /* ========= EXPORT ========= */
   window.openOrderModal = openModal;
 });
