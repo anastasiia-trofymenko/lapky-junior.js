@@ -5,9 +5,13 @@
 
 padding-top: 64px;
 padding-bottom: 64px;
-padding-right: 20px;
-padding-left: 20px;
 
+}
+
+.faq-container{
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: auto;
 }
 
 .faq-title {
@@ -165,11 +169,16 @@ button.faq-toggle.ac-trigger {
 
 @media screen and (min-width: 768px) {
 
+.faq-container {
+    padding-left: 32px;
+    padding-right: 32px;
+    }
+
 .faq-toggle {   
-    max-width: none;
-    min-width: 704px;
-    min-height: 72px;
-    padding: 20px 24px;
+   max-width: none;
+   min-width: 704px;
+   min-height: 72px;
+   padding: 20px 24px;
    display: flex;
    align-items: center;
     }
@@ -191,6 +200,16 @@ button.faq-toggle.ac-trigger {
 /* =================== FAQ-Section_desktop ==================== */
 
 @media screen and (min-width: 1440px) {
+
+.faq-section{
+    padding-bottom: 80px;
+    padding-top: 80px;
+}
+
+.faq-container {
+    padding-left: 64px;
+    padding-right: 64px;
+    }
 
 .faq-toggle {
     min-width: 864px;
