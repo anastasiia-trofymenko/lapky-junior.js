@@ -41,11 +41,11 @@ async function createCategories() {
 }
 
 createCategories().then(data => {
-  categories.insertAdjacentHTML('afterbegin', createMarkupCategories(data));
+  categories.insertAdjacentHTML('beforeend', createMarkupCategories(data));
 });
 
 function createMarkupCategories(arr) {
-  const sortedArr = arr.toSorted((a, b) => b._id.localeCompare(a._id));
+  const sortedArr = arr.toSorted((a, b) => a._id.localeCompare(b._id));
 
   return sortedArr
     .map(
