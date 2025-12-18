@@ -15,8 +15,13 @@
 }
 
 /* ===== Swiper ===== */
+
+
+
 .about-swiper {
   position: relative;
+  --swiper-navigation-color: #ff6b08;
+  --swiper-theme-color: #fa8383;
 }
 
 .swiper-slide {
