@@ -7,6 +7,8 @@
   justify-content: center;
   align-items: center;
 
+  overflow: hidden;
+
   padding: 16px;
   z-index: 1;
 
@@ -67,7 +69,7 @@ body.modal-open {
 .order-modal__close:hover,
 .order-modal__close:focus {
   transform: scale(1.15);
-  stroke: #88765c;
+  stroke: #02060a;
 }
 
 /* ===== TITLE ===== */
@@ -167,6 +169,18 @@ body.modal-open {
   border: 1px solid #88765c;
   border-radius: 12px;
   background: #eee9e3;
+}
+
+.order-form__input::placeholder,
+.order-form__comment::placeholder {
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(2, 6, 10, 0.4);
+}
+
+.order-form__input:focus::placeholder,
+.order-form__comment:focus::placeholder {
+  color: transparent;
 }
 
 /* *,
