@@ -1,58 +1,170 @@
+<!-- Davyd Bohomaz -->
 <section class="About-Us-Section" id="About-Us-Section">
   <div class="container About-container">
     <h1 class="About-wrap">Чому Хатинка Лапок</h1>
 
     <div class="image-wrapper about-swiper">
       <div class="swiper-wrapper">
+        <!-- Slide 1 -->
         <div class="swiper-slide">
-          <img
-            src="./img/About-Us/mobile/and-mobile2x.jpg"
-            srcset="./img/About-Us/table/and-table2x.jpg 1x, ./img/About-Us/PC/and-desktop2x.jpg 2x"
-            alt="Про нас"
-          />
+          <picture>
+            <!-- Desktop -->
+            <source
+              media="(min-width: 1280px)"
+              srcset="
+                ./img/About-Us/PC/first-desktop@1x.jpg 1x,
+                ./img/About-Us/PC/first-desktop2x.jpg 2x
+              "
+            />
+
+            <!-- Tablet -->
+            <source
+              media="(min-width: 768px)"
+              srcset="
+                ./img/About-Us/table/first-table@1x.jpg 1x,
+                ./img/About-Us/table/first-table2x.jpg 2x
+              "
+            />
+
+            <!-- Mobile -->
+            <img
+              src="./img/About-Us/mobile/first-mobile@1x.jpg"
+              srcset="./img/About-Us/mobile/first-mobile2x.jpg 2x"
+              alt="Про нас"
+              loading="lazy"
+            />
+          </picture>
+
           <p class="about-text">
-            Все почалося у 2015 році з кількох небайдужих людей та одного врятованого собаки. Сьогодні ми — один з найбільших притулків у регіоні, але наша мета незмінна: дати другий шанс тим, кого зрадили.
+            Все почалося у 2015 році з кількох небайдужих людей та одного
+            врятованого собаки. Сьогодні ми — один з найбільших притулків у
+            регіоні, але наша мета незмінна: дати другий шанс тим, кого зрадили.
           </p>
         </div>
 
+        <!-- Slide 2 -->
         <div class="swiper-slide">
-          <img
-            src="./img/About-Us/mobile/first-mobile2x.jpg"
-            srcset="/img/About-Us/table/first-table2x.jpg 1x, ./img/About-Us/PC/first-desktop2x.jpg 2x"
-            alt="Наші підопічні"
-          />
+          <picture>
+            <source
+              media="(min-width: 1280px)"
+              srcset="
+                ./img/About-Us/PC/second-desktop@1x.jpg 1x,
+                ./img/About-Us/PC/second-desktop2x.jpg 2x
+              "
+            />
+            <source
+              media="(min-width: 768px)"
+              srcset="
+                ./img/About-Us/table/second-table@1x.jpg 1x,
+                ./img/About-Us/table/second-table2x.jpg 2x
+              "
+            />
+            <img
+              src="./img/About-Us/mobile/sekond-mobile@1x.jpg"
+              srcset="./img/About-Us/mobile/sekond-mobile2x.jpg 2x"
+              alt="Наші підопічні"
+              loading="lazy"
+            />
+          </picture>
+
           <p class="about-text">
-            Ми рятуємо, лікуємо та знаходимо дім для тварин...
+            Ми рятуємо, реабілітуємо та знаходимо люблячі родини для безпритульних тварин. Наша мета — не просто дати прихисток, а й забезпечити кожному "хвостику" щасливе та повноцінне життя в новій родині.
           </p>
         </div>
+
+        <!-- Slide 3 -->
         <div class="swiper-slide">
-          <img
-            src="./img/About-Us/mobile/firstand-mobile2x.jpg"
-            srcset="./img/About-Us/table/firstand-table2x.jpg 1x, ./img/About-Us/PC/firstand-desktop2x.jpg 2x"
-            alt="команда ветеринарів"
-          />
+          <picture>
+            <source
+              media="(min-width: 1280px)"
+              srcset="
+                ./img/About-Us/PC/and-desktop@1x.jpg 1x,
+                ./img/About-Us/PC/and-desktop2x.jpg 2x
+              "
+            />
+            <source
+              media="(min-width: 768px)"
+              srcset="
+                ./img/About-Us/table/and-table@1x.jpg 1x,
+                ./img/About-Us/table/and-table2x.jpg 2x
+              "
+            />
+            <img
+              src="./img/About-Us/mobile/and-mobile@1x.jpg"
+              srcset="./img/About-Us/mobile/and-mobile2x.jpg 2x"
+              alt="команда ветеринарів"
+              loading="lazy"
+            />
+          </picture>
+
           <p class="about-text">
-            "Хатинка Лапок" — це команда професійних ветеринарів, кінологів та десятків волонтерів, які щодня вкладають свою душу та час у турботу про наших підопічних. Ми працюємо 24/7, бо їхнє життя залежить від нас.
+            "Хатинка Лапок" — це команда професійних ветеринарів, кінологів та
+            десятків волонтерів, які щодня вкладають свою душу та час у турботу
+            про наших підопічних. Ми працюємо 24/7, бо їхнє життя залежить від нас.
           </p>
         </div>
+
+        <!-- Slide 4 -->
         <div class="swiper-slide">
-          <img
-            src="./img/About-Us/mobile/sekond-mobile2x.jpg"
-            srcset="./img/About-Us/table/second-table2x.jpg 1x, ./img/About-Us/PC/second-desktop2x.jpg 2x"
-            alt="Кожна тварина"
-          />
+          <picture>
+            <source
+              media="(min-width: 1280px)"
+              srcset="
+                ./img/About-Us/PC/firstand-desktop@1x.jpg 1x,
+                ./img/About-Us/PC/firstand-desktop2x.jpg 2x
+              "
+            />
+            <source
+              media="(min-width: 768px)"
+              srcset="
+                ./img/About-Us/table/firstand-table@1x.jpg 1x,
+                ./img/About-Us/table/firstand-table2x.jpg 2x
+              "
+            />
+            <img
+              src="./img/About-Us/mobile/firstand-mobile@1x.jpg"
+              srcset="./img/About-Us/mobile/firstand-mobile2x.jpg 2x"
+              alt="Кожна тварина"
+              loading="lazy"
+            />
+          </picture>
+
           <p class="about-text">
-            Ми створили безпечний та комфортний простір. Кожна тварина отримує якісне харчування, своєчасну ветеринарну допомогу, проходить соціалізацію та гуляє на спеціально обладнаних майданчиках.
+            Ми створили безпечний та комфортний простір. Кожна тварина отримує
+            якісне харчування, своєчасну ветеринарну допомогу, проходить
+            соціалізацію та гуляє на спеціально обладнаних майданчиках.
           </p>
         </div>
+
+        <!-- Slide 5 -->
         <div class="swiper-slide">
-          <img
-            src="./img/About-Us/mobile/sekondand-mobile2x.jpg"
-            srcset="./img/About-Us/table/secondand-table2x.jpg 1x, ./img/About-Us/PC/secondand-desktop2x.jpg 2x"
-            alt="Ваша допомога"
-          />
+          <picture>
+            <source
+              media="(min-width: 1280px)"
+              srcset="
+                ./img/About-Us/PC/secondand-desktop@1x.jpg 1x,
+                ./img/About-Us/PC/secondand-desktop2x.jpg 2x
+              "
+            />
+            <source
+              media="(min-width: 768px)"
+              srcset="
+                ./img/About-Us/table/secondand-table@1x.jpg 1x,
+                ./img/About-Us/table/secondand-table2x.jpg 2x
+              "
+            />
+            <img
+              src="./img/About-Us/mobile/sekondand-mobile@1x.jpg"
+              srcset="./img/About-Us/mobile/sekondand-mobile2x.jpg 2x"
+              alt="Ваша допомога"
+              loading="lazy"
+            />
+          </picture>
+
           <p class="about-text">
-          Ваша допомога — безцінна. Ви можете взяти тваринку додому, стати волонтером, допомогти фінансово або інформаційно. Кожен маленький внесок наближає нас до великої мети — світу без безпритульних тварин.
+            Ваша допомога — безцінна. Ви можете взяти тваринку додому, стати
+            волонтером, допомогти фінансово або інформаційно. Кожен маленький
+            внесок наближає нас до великої мети — світу без безпритульних тварин.
           </p>
         </div>
       </div>
@@ -63,21 +175,20 @@
         aria-label="Попередній слайд"
       >
         <svg width="16" height="16">
-          <use href="./img/About-Us/left.svg#icon-arrow_back"></use>
+          <use href="./img/icons.svg#icon-arrow_back"></use>
         </svg>
       </button>
 
-      <!-- Кнопка навігації-->
       <button
         class="about-arrow about-arrow-right swiper-button-next"
         aria-label="Наступний слайд"
       >
         <svg width="16" height="16">
-          <use href="./img/About-Us/Vector.svg#icon-arrow_forward"></use>
+          <use href="./img/icons.svg#icon-arrow_forward"></use>
         </svg>
       </button>
 
-      <!-- Пагінація слайдера -->
+      <!-- Пагінація -->
       <div class="swiper-pagination"></div>
     </div>
   </div>

@@ -7,6 +7,11 @@
 .About-wrap {
   text-align: center;
   margin-bottom: 32px;
+  max-width: 335px;
+  min-height: 86px;
+  font-size: 32px;
+  font-family: Open Sans;
+
 }
 
 /* ===== Swiper ===== */
@@ -60,39 +65,43 @@
   align-items: center;
   justify-content: center;
 
-  background-color: #ffffffcc;
+  background-color: rgba(0, 0, 0, 0);
   cursor: pointer;
   z-index: 10;
 }
 
 .about-arrow:hover,
 .about-arrow:focus {
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 50px;
 }
 
 .about-arrow:disabled {
   opacity: 0.4;
-  cursor: not-allowed;
+  cursor: pointer;
 }
 
 /* accessibility */
 .about-arrow:focus-visible {
   outline: 2px solid #000;
+  border-radius: 50px;
 }
 
 .about-arrow-left {
   left: 16px;
+  border-radius: 50px;
 }
 
 .about-arrow-right {
   right: 16px;
+  border-radius: 50px;
 }
 
 /* ===== Pagination ===== */
 .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
-  background-color: #ccc;
+  background-color: rgba(0, 0, 0, 0);
   opacity: 1;
   cursor: pointer;
 }
@@ -114,6 +123,16 @@
     padding: 0;
     line-height: 150%;
   }
+  .About-wrap {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 32px;
+    max-width: 768px;
+    min-height: 86px;
+    font-size: 32px;
+    font-family: Open Sans;
+}
 }
 
 @media (min-width: 1440px) {
@@ -125,11 +144,12 @@
   .swiper-slide img {
     height: 753px;
   }
-
+ 
   .about-text {
     left: 63.5px;
     bottom: 64px;
     max-width: 548px;
+    height: 108px;
     padding: 0;
     line-height: 150%;
   }
