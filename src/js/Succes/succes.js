@@ -33,7 +33,7 @@ function initRating() {
 function createSlide({ rate, description, author }) {
   return `
     <li class="swiper-slide story-card">
-      <div class="story-rating rating" data-rate="${rate}  aria-label="Оцінка ${rate} з 5"></div>
+      <div class="story-rating rating" data-rate="${rate}"  aria-label="Оцінка ${rate} з 5"></div>
       <p class="story-text">${description}</p>
       <p class="story-author">${author}</p>
     </li>
@@ -56,7 +56,7 @@ function initSwiper() {
 
   swiperInstance = new SwiperCtor('.success-stories-swiper', {
     slidesPerView: 1,
-    slidesGroup:2,
+    slidesGroup: 2,
     speed: 500,
     autoHeight: true,
 
@@ -74,8 +74,8 @@ function initSwiper() {
     },
 
     breakpoints: {
-      768: { slidesPerView: 2, spaceBetween: 32},
-      1440: { slidesPerView: 2 , spaceBetween: 32},
+      768: { slidesPerView: 2, spaceBetween: 32 },
+      1440: { slidesPerView: 2, spaceBetween: 32 },
     },
   });
 }
@@ -83,7 +83,7 @@ function initSwiper() {
 /* ---------- Init ---------- */
 async function initSuccessStories() {
   try {
-    const data = await getFeedbacks({ page: 1, limit: 6 });
+    const data = await getFeedbacks({ page: 1, limit: 10 });
 
     const feedbacks =
       data?.results || data?.feedbacks || data?.data?.results || [];
