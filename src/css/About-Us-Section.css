@@ -1,17 +1,16 @@
 /* ===== Section ===== */
 .About-Us-Section {
-  padding: 64px 0;
-  /* margin: 0 auto; */
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 
 .About-wrap {
   text-align: center;
-  margin-bottom: 32px;
+  padding-bottom: 40px;
   max-width: 335px;
-  min-height: 86px;
   font-size: 32px;
   font-family: Open Sans;
-
+ line-height: 120%;
 }
 
 /* ===== Swiper ===== */
@@ -47,8 +46,8 @@
   position: absolute;
   left: 20px;
   bottom: 20px;
+  font-weight: 400;
   max-width: 295px;
-  padding: 16px;
   color: #fff;
   border-radius: 8px;
   background: rgba(0, 0, 0, 0);
@@ -134,18 +133,28 @@
     margin-right: auto;
     margin-bottom: 32px;
     max-width: 768px;
-    min-height: 86px;
     font-size: 32px;
     font-family: Open Sans;
+    line-height: 120%;
 }
 }
 
 @media (min-width: 1440px) {
   .About-Us-Section {
-    max-width: 1312px;
-    margin: 0 auto;
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
-
+  .About-wrap {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    max-width: 768px;
+    font-size: 32px;
+    font-family: Open Sans;
+    line-height: 120%;
+    font-weight: 700;
+}
   .swiper-slide img {
     height: 753px;
   }

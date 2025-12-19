@@ -2,6 +2,8 @@
 
 .success-stories {
   background-color: #ffffff;
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 
 /* Title block */
@@ -152,6 +154,10 @@
 
 /* ===== Desktop ≥ 1440px ===== */
 @media (min-width: 1440px) {
+  .success-stories{
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
   .success-stories__title {
     font-size: 48px;
   }

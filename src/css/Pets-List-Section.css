@@ -1,6 +1,6 @@
 .pets-list_container {
   padding-top: 64px;
-  padding-bottom: 32px;
+  padding-bottom: 64px;
 }
 .pets-title {
   font-weight: 700;
@@ -210,6 +210,7 @@
 @media only screen and (min-width: 1440px) {
   .pets-list_container {
     padding-top: 80px;
+    padding-bottom: 80px;
   }
   .categories-list {
     max-width: 1280px;
