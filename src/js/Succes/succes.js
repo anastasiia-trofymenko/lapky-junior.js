@@ -11,19 +11,22 @@ if (!listEl) {
 }
 
 /* ---------- Rating (Raty) ---------- */
+
 function initRating() {
   document.querySelectorAll('.rating').forEach(el => {
     if (el.dataset.inited) return;
 
     const rate = Number(el.dataset.rate) || 0;
 
+    const BASE = './';
+
     new Raty(el, {
       readOnly: true,
       score: rate,
       half: true,
-      starOn: 'src/img/star-filled.svg',
-      starOff: 'src/img/star-outline.svg',
-      starHalf: 'src/img/star-half.svg',
+      starOn: BASE + 'src/img/star-filled.svg',
+      starOff: BASE + 'src/img/star-outline.svg',
+      starHalf: BASE + 'src/img/star-half.svg',
     }).init();
 
     el.dataset.inited = 'true';
