@@ -4,6 +4,9 @@ import Raty from 'raty-js';
 import Swiper from 'swiper';
 import 'swiper/css';
 
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
 const listEl = document.getElementById('stories-list');
 
 if (!listEl) {
@@ -13,7 +16,7 @@ if (!listEl) {
 /* ---------- Rating (Raty) ---------- */
 
 function initRating() {
-  document.querySelectorAll('.rating').forEach(el => {
+  document.querySelectorAll('.story-rating').forEach(el => {
     if (el.dataset.inited) return;
 
     const rate = Number(el.dataset.rate) || 0;
@@ -23,7 +26,7 @@ function initRating() {
       score: rate,
       half: true,
       starOn: '../../img/star-filled.svg',
-      starOff:  '../../img/star-outline.svg',
+      starOff: '../../img/star-outline.svg',
       starHalf: '../../img/star-half.svg',
     }).init();
 
