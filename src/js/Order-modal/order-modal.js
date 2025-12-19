@@ -1,4 +1,4 @@
-import { lockScroll, unlockScroll } from '../utils/scroll-lock.js';
+import { lockScroll, unlockScroll } from '../utils/scroll-lock';
 import { createOrder } from '../../api/orders.js';
 
 import iziToast from 'izitoast';
@@ -14,12 +14,34 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!backdrop || !modal || !form || !petsSection) return;
 
   let currentAnimalId = null;
+  function handleEscKey(e) {
+    if (e.key === 'Escape') {
+      closeOrderModal();
+    }
+  }
 
+  function handleBackdropClick(e) {
+    if (e.target === backdrop) {
+      closeOrderModal();
+    }
+  }
+
+  function addModalListeners() {
+    window.addEventListener('keydown', handleEscKey);
+    backdrop.addEventListener('click', handleBackdropClick);
+  }
+
+  function removeModalListeners() {
+    window.removeEventListener('keydown', handleEscKey);
+    backdrop.removeEventListener('click', handleBackdropClick);
+  }
   /* ========= OPEN ========= */
   function openModal(animalId) {
     currentAnimalId = animalId;
     backdrop.classList.add('is-open');
     lockScroll();
+
+    addModalListeners();
   }
 
   /* ========= CLOSE ========= */
@@ -28,16 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
     unlockScroll();
     form.reset();
     currentAnimalId = null;
+
+    removeModalListeners();
   }
-
-  /* ========= OPEN FROM PET CARD ========= */
-  petsSection.addEventListener('click', e => {
-    const btn = e.target.closest('[data-animal-id]');
-    if (!btn) return;
-
-    const animalId = btn.dataset.animalId;
-    openModal(animalId);
-  });
 
   /* ========= CLOSE EVENTS ========= */
   closeBtn.addEventListener('click', closeModal);
