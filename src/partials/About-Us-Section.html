@@ -1,14 +1,13 @@
-<!-- Davyd Bohomaz -->
 <section class="About-Us-Section" id="About-Us-Section">
   <div class="container About-container">
     <h1 class="About-wrap">Чому Хатинка Лапок</h1>
 
+    <!-- SLIDER -->
     <div class="image-wrapper about-swiper">
       <div class="swiper-wrapper">
         <!-- Slide 1 -->
         <div class="swiper-slide">
           <picture>
-            <!-- Desktop -->
             <source
               media="(min-width: 1280px)"
               srcset="
@@ -16,8 +15,6 @@
                 ./img/About-Us/PC/first-desktop2x.jpg 2x
               "
             />
-
-            <!-- Tablet -->
             <source
               media="(min-width: 768px)"
               srcset="
@@ -25,8 +22,6 @@
                 ./img/About-Us/table/first-table2x.jpg 2x
               "
             />
-
-            <!-- Mobile -->
             <img
               src="./img/About-Us/mobile/first-mobile@1x.jpg"
               srcset="./img/About-Us/mobile/first-mobile2x.jpg 2x"
@@ -169,27 +164,38 @@
         </div>
       </div>
 
-      <!-- Навігація -->
-      <button
-        class="about-arrow about-arrow-left swiper-button-prev"
-        aria-label="Попередній слайд"
-      >
-        <svg width="16" height="16">
+      <button class="about-arrow about-desk-prev" aria-label="Попередній слайд">
+        <svg width="16" height="16" aria-hidden="true">
           <use href="./img/icons.svg#icon-arrow_back"></use>
         </svg>
       </button>
 
-      <button
-        class="about-arrow about-arrow-right swiper-button-next"
-        aria-label="Наступний слайд"
-      >
-        <svg width="16" height="16">
+      <button class="about-arrow about-desk-next" aria-label="Наступний слайд">
+        <svg width="16" height="16" aria-hidden="true">
           <use href="./img/icons.svg#icon-arrow_forward"></use>
         </svg>
       </button>
 
-      <!-- Пагінація -->
-      <div class="swiper-pagination"></div>
+      <div class="swiper-pagination about-desk-pagination"></div>
+    </div>
+
+    <!-- MOBILE: controls below -->
+    <div class="about-mobile-controls">
+      <div class="swiper-pagination about-mob-pagination"></div>
+
+      <div class="about-mobile-buttons">
+        <button class="about-arrow about-mob-prev" aria-label="Попередній слайд">
+          <svg width="16" height="16" aria-hidden="true">
+            <use href="./img/icons.svg#icon-arrow_back"></use>
+          </svg>
+        </button>
+
+        <button class="about-arrow about-mob-next" aria-label="Наступний слайд">
+          <svg width="16" height="16" aria-hidden="true">
+            <use href="./img/icons.svg#icon-arrow_forward"></use>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </section>
