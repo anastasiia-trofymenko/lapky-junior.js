@@ -19,7 +19,6 @@
   display: block;
   cursor: pointer;
   padding: 7px 0;
-  margin-right: 25px;
 }
 
 .icon-header-btn:hover {
@@ -151,7 +150,7 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  width: 335px;
+  width: 100%;
   height: 37px;
   padding: 8px 20px;
   background-color: #88765c;
@@ -278,6 +277,8 @@
     border: 1px solid transparent;
 
     margin-left: auto;
+    margin-top: 16px;
+    margin-bottom: 16px;
 
     transition: background-color 0.25s ease, color 0.25s ease,
       border-color 0.25s ease, box-shadow 0.15s ease, transform 0.1s ease;
