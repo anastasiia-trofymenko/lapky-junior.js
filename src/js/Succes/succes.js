@@ -18,15 +18,13 @@ function initRating() {
 
     const rate = Number(el.dataset.rate) || 0;
 
-    const BASE = './';
-
     new Raty(el, {
       readOnly: true,
       score: rate,
       half: true,
-      starOn: BASE + 'src/img/star-filled.svg',
-      starOff: BASE + 'src/img/star-outline.svg',
-      starHalf: BASE + 'src/img/star-half.svg',
+      starOn: '../../img/star-filled.svg',
+      starOff:  '../../img/star-outline.svg',
+      starHalf: '../../img/star-half.svg',
     }).init();
 
     el.dataset.inited = 'true';
