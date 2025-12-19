@@ -41,7 +41,9 @@
   margin: 32px 0 12px;
 }
 
-.story-rating .star {
+.story-rating svg,
+.story-rating img {
+  display: block;
   width: 20px;
   height: 19px;
   fill: #1c1c1c;
