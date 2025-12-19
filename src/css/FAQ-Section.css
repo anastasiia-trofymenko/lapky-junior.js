@@ -55,11 +55,11 @@ padding-bottom: 64px;
 .faq-question {
     font-family: "IBM Plex Sans", sans-serif;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.5;
     color: #02060a;
     display: block;
-    padding: 20px 48px 20px 20px;
+    padding: 20px 32px 20px 20px;
     text-align: left;
 }
 
@@ -120,6 +120,7 @@ button.faq-toggle.ac-trigger {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    margin-bottom: 24px;
 }
 
 .faq-steps li {
@@ -157,6 +158,20 @@ button.faq-toggle.ac-trigger {
     margin-top: 16px;
 }
 
+
+.faq-answer-txt p:last-of-type {
+margin-bottom: 24px;
+}
+
+.faq-answer.ac-panel .faq-answer-txt.ac-text {
+    padding: 0;
+}
+
+.faq-answer.ac-panel .faq-answer-txt.ac-text {
+    font: inherit;
+    color: inherit;
+}
+
 /* =================== FAQ-Section_tablet ==================== */
 
 @media screen and (min-width: 768px) {
@@ -178,6 +193,7 @@ button.faq-toggle.ac-trigger {
 .faq-question {
     margin: 0;
     padding-right: 48px;
+    font-size: 16px;
     }
 
 .faq-item{
