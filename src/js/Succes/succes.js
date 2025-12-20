@@ -1,7 +1,6 @@
 import { getFeedbacks } from '../../api/feedbacks';
 import Raty from 'raty-js';
 
-
 import Swiper from 'swiper';
 import 'swiper/css';
 
@@ -16,16 +15,15 @@ if (!listEl) {
 
 /* ---------- Rating (Raty) ---------- */
 
-
 function initRating() {
   document.querySelectorAll('.story-rating').forEach(el => {
     if (el.dataset.inited) return;
 
     const rate = Number(el.dataset.rate) || 0;
+
     new Raty(el, {
       readOnly: true,
       score: rate,
-      raty,
       half: true,
       starOn: './img/star-filled.svg',
       starOff: './img/star-outline.svg',
