@@ -54,7 +54,6 @@
   width: 20px;
   height: 19px;
   stroke: #02060a;
-  
 }
 
 .story-rating .raty-star-off{
@@ -90,8 +89,8 @@
 }
 
 .dot {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   background-color: #cfcfcf;
   border-radius: 50%;
   cursor: pointer;
@@ -99,6 +98,8 @@
 
 .dot.active {
   background-color: #1c1c1c;
+  width: 10px;
+  height: 10px;
 }
 
 /* Buttons */
