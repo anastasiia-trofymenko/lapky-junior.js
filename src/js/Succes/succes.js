@@ -16,17 +16,16 @@ if (!listEl) {
 
 /* ---------- Rating (Raty) ---------- */
 
+
 function initRating() {
   document.querySelectorAll('.story-rating').forEach(el => {
     if (el.dataset.inited) return;
 
     const rate = Number(el.dataset.rate) || 0;
-    console.log(rate);
-    const m = console.log(true)
     new Raty(el, {
-      m,
       readOnly: true,
       score: rate,
+      raty,
       half: true,
       starOn: './img/star-filled.svg',
       starOff: './img/star-outline.svg',
