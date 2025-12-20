@@ -1,6 +1,7 @@
 import { getFeedbacks } from '../../api/feedbacks';
 import Raty from 'raty-js';
 
+
 import Swiper from 'swiper';
 import 'swiper/css';
 
@@ -21,14 +22,15 @@ function initRating() {
 
     const rate = Number(el.dataset.rate) || 0;
     console.log(rate);
-
+    const m = console.log(true)
     new Raty(el, {
+      m,
       readOnly: true,
       score: rate,
       half: true,
-      starOn: './img/pablic/star-filled.svg',
-      starOff: './img/pablic/star-outline.svg',
-      starHalf: './img/pablic/star-half.svg',
+      starOn: './img/star-filled.svg',
+      starOff: './img/star-outline.svg',
+      starHalf: './img/star-half.svg',
     }).init();
 
     el.dataset.inited = 'true';
