@@ -26,9 +26,9 @@ function initRating() {
       readOnly: true,
       score: rate,
       half: true,
-      starOn: '/img/star-filled.svg',
-      starOff: '/img/star-outline.svg',
-      starHalf: '/img/star-half.svg',
+      starOn: './img/pablic/star-filled.svg',
+      starOff: './img/pablic/star-outline.svg',
+      starHalf: './img/pablic/star-half.svg',
     }).init();
 
     el.dataset.inited = 'true';
