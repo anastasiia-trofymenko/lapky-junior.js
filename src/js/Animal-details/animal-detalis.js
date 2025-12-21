@@ -7,6 +7,7 @@ const modalCloseBtn = document.getElementById('modalCloseBtn');
 const modalAdoptBtns = document.querySelectorAll('[data-modal-adopt]');
 
 // Modal Content Elements
+const modalImageWrapper = document.getElementById('modalImageWrapper');
 const modalImage = document.getElementById('modalImage');
 const modalSpecies = document.getElementById('modalSpecies');
 const modalName = document.getElementById('modalName');
@@ -58,15 +59,29 @@ function openPetModal(animalId, animalsStore) {
   currentAnimalId = animalId;
 
   // Populate modal with animal data
-  modalImage.src = animal.image;
-  modalImage.alt = animal.name;
+  /* ===== IMAGE RENDER ===== */
+  modalImageWrapper.replaceChildren();
 
+  const imageMarkup = [animal]
+    .map(
+      ({ image, name }) => `
+        <img
+          class="modal-image"
+          src="${image}"
+          alt="${name}"
+          loading="lazy"
+        />
+      `
+    )
+    .join('');
+
+  modalImageWrapper.insertAdjacentHTML('afterbegin', imageMarkup);
+
+  /* ===== TEXT CONTENT ===== */
   modalSpecies.textContent = animal.species;
-
   modalName.textContent = animal.name;
   modalAge.textContent = animal.age;
   modalGender.textContent = animal.gender;
-
   modalDescription.textContent = animal.description || 'Інформація відсутня';
   modalHealth.textContent =
     animal.healthStatus || "Інформація про здоров'я відсутня";
