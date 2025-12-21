@@ -97,6 +97,13 @@
   background: #000;
 }
 
+.sli-icon{
+  width: 20px;
+  height: 20px;
+    fill: none;
+    stroke: #1c1c1c;
+}
+
 /* ===== Overlay ===== */
 .about-overlay-controls {
   position: absolute;
