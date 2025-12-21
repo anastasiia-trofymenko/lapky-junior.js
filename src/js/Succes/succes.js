@@ -4,9 +4,6 @@ import Raty from 'raty-js';
 import Swiper from 'swiper';
 import 'swiper/css';
 
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
-
 const listEl = document.getElementById('stories-list');
 
 if (!listEl) {
@@ -14,6 +11,10 @@ if (!listEl) {
 }
 
 /* ---------- Rating (Raty) ---------- */
+
+const starOnUrl = new URL('../../img/star-filled.svg', import.meta.url).href;
+const starOffUrl = new URL('../../img/star-outline.svg', import.meta.url).href;
+const starHalfUrl = new URL('../../img/star-half.svg', import.meta.url).href;
 
 function initRating() {
   document.querySelectorAll('.story-rating').forEach(el => {
@@ -25,9 +26,9 @@ function initRating() {
       readOnly: true,
       score: rate,
       half: true,
-      starOn: '../../img/star-filled.svg',
-      starOff: '../../img/star-outline.svg',
-      starHalf: '../../img/star-half.svg',
+      starOn: starOnUrl,
+      starOff: starOffUrl,
+      starHalf: starHalfUrl,
     }).init();
 
     el.dataset.inited = 'true';

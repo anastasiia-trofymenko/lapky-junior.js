@@ -49,7 +49,8 @@
 }
 
 .story-rating svg,
-.story-rating img {
+.story-rating img
+{
   display: block;
   width: 20px;
   height: 19px;
@@ -98,8 +99,8 @@
 
 .dot.active {
   background-color: #1c1c1c;
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
 }
 
 /* Buttons */
