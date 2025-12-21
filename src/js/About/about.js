@@ -1,19 +1,15 @@
 function applyAboutControls(swiper) {
   const isMobile = window.innerWidth < 768;
 
-  const nextEl = isMobile ? '.about-mob-next' : '.about-desk-next';
-  const prevEl = isMobile ? '.about-mob-prev' : '.about-desk-prev';
-  const pagEl  = isMobile ? '.about-mob-pagination' : '.about-desk-pagination';
+  swiper.params.navigation.nextEl = isMobile ? '.about-mob-next' : '.about-desk-next';
+  swiper.params.navigation.prevEl = isMobile ? '.about-mob-prev' : '.about-desk-prev';
 
-  // Navigation
-  swiper.params.navigation.nextEl = nextEl;
-  swiper.params.navigation.prevEl = prevEl;
   swiper.navigation.destroy();
   swiper.navigation.init();
   swiper.navigation.update();
 
-  // Pagination
-  swiper.params.pagination.el = pagEl;
+  swiper.params.pagination.el = isMobile ? '.about-mob-pagination' : '.about-desk-pagination';
+
   swiper.pagination.destroy();
   swiper.pagination.init();
   swiper.pagination.render();
@@ -25,7 +21,6 @@ const aboutSwiper = new Swiper('.about-swiper', {
   spaceBetween: 0,
   speed: 600,
 
-  // initial (any; will be replaced on init)
   navigation: {
     nextEl: '.about-mob-next',
     prevEl: '.about-mob-prev',
@@ -40,17 +35,10 @@ const aboutSwiper = new Swiper('.about-swiper', {
   allowTouchMove: true,
   watchOverflow: true,
 
-  breakpoints: {
-    768: {},
-    1440: {},
-  },
+  breakpoints: { 768: {}, 1440: {} },
 
   on: {
-    init(swiper) {
-      applyAboutControls(swiper);
-    },
-    breakpoint(swiper) {
-      applyAboutControls(swiper);
-    },
+    init(swiper) { applyAboutControls(swiper); },
+    breakpoint(swiper) { applyAboutControls(swiper); },
   },
 });
