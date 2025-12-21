@@ -4,6 +4,9 @@ import Raty from 'raty-js';
 import Swiper from 'swiper';
 import 'swiper/css';
 
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
 const listEl = document.getElementById('stories-list');
 
 if (!listEl) {
@@ -11,8 +14,9 @@ if (!listEl) {
 }
 
 /* ---------- Rating (Raty) ---------- */
+
 function initRating() {
-  document.querySelectorAll('.rating').forEach(el => {
+  document.querySelectorAll('.story-rating').forEach(el => {
     if (el.dataset.inited) return;
 
     const rate = Number(el.dataset.rate) || 0;
@@ -21,9 +25,9 @@ function initRating() {
       readOnly: true,
       score: rate,
       half: true,
-      starOn: 'src/img/star-filled.svg',
-      starOff: 'src/img/star-outline.svg',
-      starHalf: 'src/img/star-half.svg',
+      starOn: './img/star-filled.svg',
+      starOff: './img/star-outline.svg',
+      starHalf: './img/star-half.svg',
     }).init();
 
     el.dataset.inited = 'true';
@@ -32,11 +36,11 @@ function initRating() {
 
 function createSlide({ rate, description, author }) {
   return `
-    <li class="swiper-slide story-card">
+    <div class="swiper-slide story-card">
       <div class="story-rating rating" data-rate="${rate}"  aria-label="Оцінка ${rate} з 5"></div>
       <p class="story-text">${description}</p>
       <p class="story-author">${author}</p>
-    </li>
+    </div>
   `;
 }
 
@@ -83,7 +87,7 @@ function initSwiper() {
 /* ---------- Init ---------- */
 async function initSuccessStories() {
   try {
-    const data = await getFeedbacks({ page: 1, limit: 10 });
+    const data = await getFeedbacks({ page: 1, limit: 5 });
 
     const feedbacks =
       data?.results || data?.feedbacks || data?.data?.results || [];
