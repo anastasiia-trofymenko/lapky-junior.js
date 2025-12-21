@@ -12,9 +12,10 @@ if (!listEl) {
 
 /* ---------- Rating (Raty) ---------- */
 
-const starOnUrl = new URL('./img/star-filled.svg', import.meta.url).href;
-const starOffUrl = new URL('./img/star-outline.svg', import.meta.url).href;
-const starHalfUrl = new URL('./img/star-half.svg', import.meta.url).href;
+const starOnUrl = new URL('../../img/star-filled.svg', import.meta.url).href;
+const starOffUrl = new URL('../../img/star-outline.svg', import.meta.url).href;
+const starHalfUrl = new URL('../../img/star-half.svg', import.meta.url).href;
+
 
 function initRating() {
   document.querySelectorAll('.story-rating').forEach(el => {
