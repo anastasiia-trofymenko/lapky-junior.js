@@ -1,4 +1,6 @@
-
+// MODERN NORMALIZE
+import 'modern-normalize/modern-normalize.css';
+// Swaper
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -8,7 +10,6 @@ import './js/header/header.js';
 import './js/hero/hero.js';
 import './js/Faq/faq.js';
 import './js/About/about.js';
-import './js/Animal-list/animal-list.js';
 import './js/Animal-details/animal-detalis.js';
 import './js/Succes/succes.js';
 import './js/Pets/pets.js';
