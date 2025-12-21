@@ -1,186 +1,237 @@
+/* ===== Section ===== */
+.About-Us-Section {
+  padding: 64px 0;
+}
 
-.About-Us-Section { padding: 64px 0; }
-
-.About-wrap{
+.About-wrap {
   margin: 0 auto 40px;
   max-width: 335px;
   text-align: center;
   font: 700 32px/1.2 "Open Sans", sans-serif;
 }
 
-.about-swiper{ position: relative; }
-.image-wrapper{ position: relative; overflow: hidden; }
-.swiper-slide{ position: relative; }
-
-.swiper-slide img{
-  display:block;
-  width:100%;
-  height:402px;
-  object-fit:cover;
+.about-slider {
+  position: relative;
 }
 
-.about-text{
-  position:absolute;
-  left:20px;
-  right:20px;
-  bottom:20px;
+.about-swiper {
+  position: relative;
+  overflow: hidden;
+}
 
-  margin:0;
-  padding:12px;
 
-  color:#fff;
+.about-swiper .swiper-wrapper {
+  display: flex;
+}
+
+.about-swiper .swiper-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  position: relative;
+}
+
+.about-swiper .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 402px;
+  object-fit: cover;
+}
+
+
+.about-text {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+
+  margin: 0;
+  padding: 12px;
+
+  color: #fff;
   font: 400 14px/1.5 "Open Sans", sans-serif;
 
   border-radius: 8px;
+  background: rgba(0, 0, 0, 0.35);
 }
 
-.about-arrow{
-  width:48px;
-  height:48px;
-  padding:12px;
+/* ===== button ===== */
+.about-arrow {
+  width: 48px;
+  height: 48px;
+  padding: 12px;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  border:1px solid #c3b49d;
-  border-radius:8px;
-  background:#eee9e3;
+  border: 1px solid #c3b49d;
+  border-radius: 8px;
+  background: #eee9e3;
 
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.about-arrow svg{ display:block; }
+.about-arrow svg {
+  display: block;
+}
 
-.about-arrow:focus-visible{
+.about-arrow:focus-visible {
   outline: 2px solid #111;
   outline-offset: 2px;
 }
 
-.about-arrow.swiper-button-disabled{
-  opacity:.4;
-  cursor:default;
+.about-arrow.swiper-button-disabled {
+  opacity: 0.4;
+  cursor: default;
 }
 
-.swiper-pagination-bullet{
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  opacity:1;
-  background-color: #cfcfcf;
+.swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.25);
 }
 
-.about-mobile-controls{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  width:100%;
-  margin-top:16px;
+.swiper-pagination-bullet-active {
+  background: #000;
 }
 
-.about-mob-pagination{
+.sli-icon{
+  width: 20px;
+  height: 20px;
+    fill: none;
+    stroke: #1c1c1c;
+}
+
+/* ===== Overlay ===== */
+.about-overlay-controls {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.about-overlay-controls .about-arrow {
+  pointer-events: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.about-overlay-controls .about-desk-prev {
+  left: -19px;
+}
+
+.about-overlay-controls .about-desk-next {
+  right: -19px;
+}
+
+.about-mobile-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  width: 100%;
+  margin-top: 16px;
+}
+
+.about-mob-pagination.swiper-pagination {
   position: static !important;
   transform: none !important;
 
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-  gap:8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
-  width:auto !important;
-  margin:0 !important;
-  flex: 0 0 auto;
+  width: auto !important;
+  margin: 0 !important;
 }
 
-.about-mob-pagination .swiper-pagination-bullet{
-  background: rgba(0,0,0,.25);
-  margin:0 !important;
-}
-.about-mob-pagination .swiper-pagination-bullet-active{
-  background:#000;
+.about-mobile-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.about-mobile-buttons{
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:12px;
-  margin-left:auto;
-  flex: 0 0 auto;
+.about-desk-pagination.swiper-pagination {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 16px;
+
+  position: static !important;
+  transform: none !important;
+  width: auto !important;
 }
 
-@media (max-width: 767.98px){
-  .about-desk-prev,
-  .about-desk-next,
-  .about-desk-pagination{
-    display:none;
-  }
-}
-
-@media (min-width: 768px){
-  /* hide mobile controls row */
-  .about-mobile-controls{ display:none; }
-
-  .About-wrap{
-    max-width:768px;
-    margin-bottom:32px;
+@media (min-width: 768px) {
+  .About-wrap {
+    max-width: 768px;
+    margin-bottom: 32px;
   }
 
-  .swiper-slide img{ height:404px; }
+  .about-overlay-controls .about-desk-prev {
+  left: -28px;
+}
 
-  .about-text{
-    left:32px;
-    right:auto;
-    bottom:32px;
-    max-width:548px;
-    padding:0;
+.about-overlay-controls .about-desk-next {
+  right: -28px;
+}
+  .about-text {
+    left: 32px;
+    right: auto;
+    bottom: 32px;
+    max-width: 548px;
+
+    padding: 0;
     background: transparent;
-    font-size:16px;
-    line-height:1.5;
+
+    font-size: 16px;
   }
 
-  .about-desk-prev,
-  .about-desk-next{
-    position:absolute;
-    top:50%;
-    transform: translateY(-50%);
-    z-index:10;
-  }
-  .about-desk-prev{ left:16px; }
-  .about-desk-next{ right:16px; }
-
-
-  .about-desk-pagination{
-    position:absolute;
-    left:50%;
-    transform: translateX(-50%);
-    bottom:16px;
-    z-index:9;
-    width:auto;
+  .about-desk-pagination.swiper-pagination {
+    display: flex;
   }
 
-  .about-desk-pagination .swiper-pagination-bullet{
-    background: rgba(255,255,255,.6);
-    margin:0 4px !important;
+  .about-mobile-controls {
+    display: none;
   }
-  .about-desk-pagination .swiper-pagination-bullet-active{
-    background:#eee9e3;
-    border:1px solid #c3b49d;
+
+  .about-overlay-controls {
+    display: block;
   }
 }
 
-
-@media (min-width: 1440px){
-  .About-Us-Section{ padding:80px 0; }
-
-  .swiper-slide img{ height:753px; }
-
-  .about-text{
-    left:63.5px;
-    bottom:64px;
-    max-width:548px;
-    height:108px;
+@media (min-width: 1440px) {
+  .About-Us-Section {
+    padding: 80px 0;
   }
 
-  .about-desk-pagination{ bottom:24px; }
+  .about-swiper .swiper-slide img {
+    height: 753px;
+  }
+
+  .about-text {
+    left: 63.5px;
+    bottom: 64px;
+    font-weight: 400;
+    max-width: 548px;
+    height: 108px;
+    line-height: 150%;
+    /* font-family: 'IBM Plex Sans', sans-serif; */
+  }
+
+  .about-desk-pagination.swiper-pagination {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .about-overlay-controls {
+    display: none;
+  }
 }

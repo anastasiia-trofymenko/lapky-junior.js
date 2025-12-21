@@ -12,6 +12,10 @@ if (!listEl) {
 
 /* ---------- Rating (Raty) ---------- */
 
+const starOnUrl = new URL('../../img/star-filled.svg', import.meta.url).href;
+const starOffUrl = new URL('../../img/star-outline.svg', import.meta.url).href;
+const starHalfUrl = new URL('../../img/star-half.svg', import.meta.url).href;
+
 function initRating() {
   document.querySelectorAll('.story-rating').forEach(el => {
     if (el.dataset.inited) return;
@@ -22,9 +26,9 @@ function initRating() {
       readOnly: true,
       score: rate,
       half: true,
-      starOn: './img/star-filled.png',
-      starOff: './img/star-outline.png',
-      starHalf: './img/star-half.png',
+      starOn: starOnUrl,
+      starOff: starOffUrl,
+      starHalf: starHalfUrl,
     }).init();
 
     el.dataset.inited = 'true';
@@ -33,11 +37,11 @@ function initRating() {
 
 function createSlide({ rate, description, author }) {
   return `
-    <div class="swiper-slide story-card">
+    <li class="swiper-slide story-card">
       <div class="story-rating rating" data-rate="${rate}"  aria-label="Оцінка ${rate} з 5"></div>
       <p class="story-text">${description}</p>
       <p class="story-author">${author}</p>
-    </div>
+    </li>
   `;
 }
 
@@ -84,7 +88,7 @@ function initSwiper() {
 /* ---------- Init ---------- */
 async function initSuccessStories() {
   try {
-    const data = await getFeedbacks({ page: 1, limit: 5 });
+    const data = await getFeedbacks({ page: 1, limit: 10 });
 
     const feedbacks =
       data?.results || data?.feedbacks || data?.data?.results || [];
