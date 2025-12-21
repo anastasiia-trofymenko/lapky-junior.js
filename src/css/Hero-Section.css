@@ -8,8 +8,8 @@
       rgba(62, 54, 38, 0) 100%
     ),
     image-set(
-      url('../img/Hero-section/hero-image-mob-min.png') 1x,
-      url('../img/Hero-section/hero-image-mob@2x-min.png') 2x
+      url('../img/Hero-section/hero-mobile1x.jpg') 1x,
+      url('../img/Hero-section/hero-mobile2x.jpg') 2x
     );
   background-repeat: no-repeat, no-repeat;
   background-position: left top, center;
@@ -73,8 +73,8 @@
         rgba(62, 54, 38, 0) 100%
       ),
       image-set(
-        url('../img/Hero-section/hero-image-tab-min.png') 1x,
-        url('../img/Hero-section/hero-image-tab@2x-min.png') 2x
+        url('../img/Hero-section/hero-tablet1x.jpg') 1x,
+        url('../img/Hero-section/hero-tablet2x.jpg') 2x
       );
   }
 
@@ -101,8 +101,8 @@
         rgba(62, 54, 38, 0) 100%
       ),
       image-set(
-        url('../img/Hero-section/hero-image-desktop-min.png') 1x,
-        url('../img/Hero-section/hero-image-desktop@2x-min.png') 2x
+        url('../img/Hero-section/hero-desktop1x.jpg') 1x,
+        url('../img/Hero-section/hero-desktop2x.jpg') 2x
       );
   }
   .hero-title {
