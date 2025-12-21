@@ -1,22 +1,47 @@
-function applyAboutControls(swiper) {
-  const isMobile = window.innerWidth < 768;
+import Swiper from 'swiper';
+import { Navigation, Pagination } from 'swiper/modules';
 
-  swiper.params.navigation.nextEl = isMobile ? '.about-mob-next' : '.about-desk-next';
-  swiper.params.navigation.prevEl = isMobile ? '.about-mob-prev' : '.about-desk-prev';
+function applyAboutControls(swiper) {
+  const isMobile = window.matchMedia('(max-width: 767.98px)').matches;
+
+  const nextEl = isMobile ? '.about-mob-next' : '.about-desk-next';
+  const prevEl = isMobile ? '.about-mob-prev' : '.about-desk-prev';
+  const pagEl  = isMobile ? '.about-mob-pagination' : '.about-desk-pagination';
+
+  if (
+    swiper.params.navigation?.nextEl === nextEl &&
+    swiper.params.navigation?.prevEl === prevEl &&
+    swiper.params.pagination?.el === pagEl
+  ) {
+    return;
+  }
+
+  swiper.params.navigation = swiper.params.navigation || {};
+  swiper.params.navigation.nextEl = nextEl;
+  swiper.params.navigation.prevEl = prevEl;
 
   swiper.navigation.destroy();
-  swiper.navigation.init();
-  swiper.navigation.update();
 
-  swiper.params.pagination.el = isMobile ? '.about-mob-pagination' : '.about-desk-pagination';
+  if (document.querySelector(nextEl) && document.querySelector(prevEl)) {
+    swiper.navigation.init();
+    swiper.navigation.update();
+  }
+
+  swiper.params.pagination = swiper.params.pagination || {};
+  swiper.params.pagination.el = pagEl;
 
   swiper.pagination.destroy();
-  swiper.pagination.init();
-  swiper.pagination.render();
-  swiper.pagination.update();
+
+  if (document.querySelector(pagEl)) {
+    swiper.pagination.init();
+    swiper.pagination.render();
+    swiper.pagination.update();
+  }
 }
 
 const aboutSwiper = new Swiper('.about-swiper', {
+  modules: [Navigation, Pagination],
+
   slidesPerView: 1,
   spaceBetween: 0,
   speed: 600,
