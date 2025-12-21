@@ -22,9 +22,10 @@ function initRating() {
       readOnly: true,
       score: rate,
       half: true,
-      starOn: './img/star-filled.png',
-      starOff: './img/star-outline.png',
-      starHalf: './img/star-half.png',
+      path: '/img',
+      starOn: 'star-filled.png',
+      starOff: 'star-outline.png',
+      starHalf: 'star-half.png',
     }).init();
 
     el.dataset.inited = 'true';
