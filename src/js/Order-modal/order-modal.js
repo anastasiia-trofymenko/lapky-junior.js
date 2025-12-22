@@ -16,13 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentAnimalId = null;
   function handleEscKey(e) {
     if (e.key === 'Escape') {
-      closeOrderModal();
+      closeModal();
     }
   }
 
   function handleBackdropClick(e) {
     if (e.target === backdrop) {
-      closeOrderModal();
+      closeModal();
     }
   }
 

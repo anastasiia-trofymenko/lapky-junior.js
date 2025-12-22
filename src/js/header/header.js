@@ -1,68 +1,48 @@
 'use strict';
 
-import { lockScroll, unlockScroll, smoothScrollTo } from '../utils/scroll-lock';
+import { lockScroll, unlockScroll } from '../utils/scroll-lock';
+import { smoothScrollTo } from '../utils/scroll';
 
 const refs = {
   burgerBtn: document.querySelector('.header-burger-btn'),
   modalMenu: document.querySelector('.header-modal-menu'),
   closeBtn: document.querySelector('.header-close-btn'),
-  modalLinks: document.querySelectorAll('.header-modal-link'),
-  modalBtn: document.querySelector('.header-modal-btn'),
   header: document.querySelector('.header'),
 };
 
-/* =========================
-   OPEN / CLOSE
-========================= */
+let isMenuOpen = false;
 
 function openMenu() {
-  if (refs.modalMenu.classList.contains('is-open')) return;
+  if (isMenuOpen) return;
 
   refs.modalMenu.classList.add('is-open');
   lockScroll();
   addModalListeners();
+  isMenuOpen = true;
 }
 
 function closeMenu() {
-  if (!refs.modalMenu.classList.contains('is-open')) return;
+  if (!isMenuOpen) return;
 
   refs.modalMenu.classList.remove('is-open');
   unlockScroll();
   removeModalListeners();
+  isMenuOpen = false;
 }
-
-/* =========================
-   LISTENERS MANAGEMENT
-========================= */
 
 function addModalListeners() {
   document.addEventListener('keydown', onEscPress);
-  document.addEventListener('click', onModalClick);
+  document.addEventListener('click', onModalMenuClick);
 }
 
 function removeModalListeners() {
   document.removeEventListener('keydown', onEscPress);
-  document.removeEventListener('click', onModalClick);
+  document.removeEventListener('click', onModalMenuClick);
 }
 
-/* =========================
-   HANDLERS
-========================= */
+document.addEventListener('click', onAnchorClick);
 
-function onEscPress(e) {
-  if (e.key !== 'Escape') return;
-  closeMenu();
-}
-
-function onModalClick(e) {
-  const modalLink = e.target.closest('.header-modal-link');
-  const modalBtn = e.target.closest('.header-modal-btn');
-  const logoLink = e.target.closest('.icon-header-btn');
-
-  if (modalLink || modalBtn || logoLink) {
-    closeMenu();
-  }
-
+function onAnchorClick(e) {
   const anchor = e.target.closest('a[href^="#"]');
   if (!anchor) return;
 
@@ -76,13 +56,26 @@ function onModalClick(e) {
 
   const headerHeight = refs.header?.offsetHeight || 0;
   smoothScrollTo(targetEl, headerHeight);
-
-  closeMenu();
 }
 
-/* =========================
-   STATIC LISTENERS
-========================= */
+function onModalMenuClick(e) {
+  const isInsideModal = e.target.closest('.header-modal-menu');
+  if (!isInsideModal) return;
+
+  const modalLink = e.target.closest('.header-modal-link');
+  const modalBtn = e.target.closest('.header-modal-btn');
+  const logoLink = e.target.closest('.icon-header-btn');
+
+  if (modalLink || modalBtn || logoLink) {
+    closeMenu();
+  }
+}
+
+function onEscPress(e) {
+  if (e.key === 'Escape') {
+    closeMenu();
+  }
+}
 
 refs.burgerBtn?.addEventListener('click', openMenu);
 refs.closeBtn?.addEventListener('click', closeMenu);

@@ -38,7 +38,6 @@ function handleEscapeKey(event) {
 
 function handleAdoptClick() {
   closePetModal();
-  console.log('Opening adoption form for animal:', currentAnimalId);
   openOrderModal(currentAnimalId);
 }
 
