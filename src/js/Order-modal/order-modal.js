@@ -11,18 +11,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('orderForm');
   const petsSection = document.getElementById('pets-list-section');
 
-  if (!backdrop || !modal || !form || !petsSection) return;
+  if (!backdrop || !modal || !closeBtn || !form || !petsSection) return;
 
   let currentAnimalId = null;
+
+  function closeModal() {
+    backdrop.classList.remove('is-open');
+    unlockScroll();
+    form.reset();
+    currentAnimalId = null;
+
+    removeModalListeners();
+  }
+
   function handleEscKey(e) {
-    if (e.key === 'Escape') {
-      closeOrderModal();
+    if (e.key === 'Escape' && backdrop.classList.contains('is-open')) {
+      closeModal();
     }
   }
 
   function handleBackdropClick(e) {
     if (e.target === backdrop) {
-      closeOrderModal();
+      closeModal();
     }
   }
 
@@ -35,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.removeEventListener('keydown', handleEscKey);
     backdrop.removeEventListener('click', handleBackdropClick);
   }
-  /* ========= OPEN ========= */
+
   function openModal(animalId) {
     currentAnimalId = animalId;
     backdrop.classList.add('is-open');
@@ -44,28 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addModalListeners();
   }
 
-  /* ========= CLOSE ========= */
-  function closeModal() {
-    backdrop.classList.remove('is-open');
-    unlockScroll();
-    form.reset();
-    currentAnimalId = null;
-
-    removeModalListeners();
-  }
-
-  /* ========= CLOSE EVENTS ========= */
   closeBtn.addEventListener('click', closeModal);
-
-  backdrop.addEventListener('click', e => {
-    if (e.target === backdrop) closeModal();
-  });
-
-  window.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && backdrop.classList.contains('is-open')) {
-      closeModal();
-    }
-  });
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
@@ -76,53 +65,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const comment = form.comment.value.trim();
 
     if (!name || !phone) {
-      iziToast.error({
-        message: 'Заповніть обовʼязкові поля',
-        position: 'topRight',
-      });
+      iziToast.error({ message: 'Заповніть обовʼязкові поля', position: 'topRight' });
       return;
     }
 
     if (phone.length !== 12) {
-      iziToast.error({
-        message: 'Телефон має формат 380XXXXXXXXX',
-        position: 'topRight',
-      });
+      iziToast.error({ message: 'Телефон має формат 380XXXXXXXXX', position: 'topRight' });
       return;
     }
 
     if (!currentAnimalId) {
-      iziToast.error({
-        message: 'Не обрано тварину',
-        position: 'topRight',
-      });
+      iziToast.error({ message: 'Не обрано тварину', position: 'topRight' });
       return;
     }
 
-    const data = {
-      name,
-      phone,
-      comment,
-      animalId: currentAnimalId,
-    };
-
     try {
-      await createOrder(data);
+      await createOrder({ name, phone, comment, animalId: currentAnimalId });
 
-      iziToast.success({
-        message: 'Заявку надіслано',
-        position: 'topRight',
-      });
-
+      iziToast.success({ message: 'Заявку надіслано', position: 'topRight' });
       closeModal();
     } catch (error) {
-      iziToast.error({
-        message: error.message || 'Помилка сервера',
-        position: 'topRight',
-      });
+      iziToast.error({ message: error.message || 'Помилка сервера', position: 'topRight' });
     }
   });
 
-  /* ========= EXPORT ========= */
   window.openOrderModal = openModal;
 });
