@@ -1,69 +1,118 @@
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 
-function applyAboutControls(swiper) {
-  const isMobile = window.matchMedia('(max-width: 767.98px)').matches;
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-  const nextEl = isMobile ? '.about-mob-next' : '.about-desk-next';
-  const prevEl = isMobile ? '.about-mob-prev' : '.about-desk-prev';
-  const pagEl  = isMobile ? '.about-mob-pagination' : '.about-desk-pagination';
+function initAboutSwiper() {
+  const swiperEl = document.querySelector('.about-swiper');
+  if (!swiperEl) return null;
 
-  if (
-    swiper.params.navigation?.nextEl === nextEl &&
-    swiper.params.navigation?.prevEl === prevEl &&
-    swiper.params.pagination?.el === pagEl
-  ) {
-    return;
+  const mqMobile = window.matchMedia('(max-width: 767.98px)');
+
+  const getControls = () => {
+    const isMobile = mqMobile.matches;
+
+    return {
+      nextEl: isMobile ? '.about-mob-next' : '.about-desk-next',
+      prevEl: isMobile ? '.about-mob-prev' : '.about-desk-prev',
+      pagEl: isMobile ? '.about-mob-pagination' : '.about-desk-pagination',
+    };
+  };
+
+  const aboutSwiper = new Swiper(swiperEl, {
+    modules: [Navigation, Pagination],
+
+    slidesPerView: 1,
+    spaceBetween: 0,
+    speed: 600,
+
+    navigation: {
+      nextEl: '.about-mob-next',
+      prevEl: '.about-mob-prev',
+    },
+
+    pagination: {
+      el: '.about-mob-pagination',
+      clickable: true,
+      type: 'bullets',
+    },
+
+    grabCursor: true,
+    allowTouchMove: true,
+    watchOverflow: true,
+
+    breakpoints: {
+      768: {},
+      1440: {},
+    },
+  });
+
+  function updateControls() {
+    if (!aboutSwiper || aboutSwiper.destroyed) return;
+
+    const { nextEl, prevEl, pagEl } = getControls();
+
+    const navSame =
+      aboutSwiper.params.navigation?.nextEl === nextEl &&
+      aboutSwiper.params.navigation?.prevEl === prevEl;
+
+    const pagSame = aboutSwiper.params.pagination?.el === pagEl;
+
+    if (navSame && pagSame) return;
+
+    // --- Navigation ---
+    const nextNode = document.querySelector(nextEl);
+    const prevNode = document.querySelector(prevEl);
+
+    if (nextNode && prevNode) {
+      aboutSwiper.params.navigation = aboutSwiper.params.navigation || {};
+      aboutSwiper.params.navigation.nextEl = nextEl;
+      aboutSwiper.params.navigation.prevEl = prevEl;
+
+      aboutSwiper.navigation.destroy();
+      aboutSwiper.navigation.init();
+      aboutSwiper.navigation.update();
+    }
+
+    // --- Pagination ---
+    const pagNode = document.querySelector(pagEl);
+
+    if (pagNode) {
+      aboutSwiper.params.pagination = aboutSwiper.params.pagination || {};
+      aboutSwiper.params.pagination.el = pagEl;
+
+      aboutSwiper.pagination.destroy();
+      aboutSwiper.pagination.init();
+      aboutSwiper.pagination.render();
+      aboutSwiper.pagination.update();
+    }
+
+    aboutSwiper.update();
   }
 
-  swiper.params.navigation = swiper.params.navigation || {};
-  swiper.params.navigation.nextEl = nextEl;
-  swiper.params.navigation.prevEl = prevEl;
+  requestAnimationFrame(updateControls);
 
-  swiper.navigation.destroy();
-
-  if (document.querySelector(nextEl) && document.querySelector(prevEl)) {
-    swiper.navigation.init();
-    swiper.navigation.update();
+  const mqHandler = () => updateControls();
+  if (typeof mqMobile.addEventListener === 'function') {
+    mqMobile.addEventListener('change', mqHandler);
+  } else {
+    mqMobile.addListener(mqHandler);
   }
 
-  swiper.params.pagination = swiper.params.pagination || {};
-  swiper.params.pagination.el = pagEl;
+  window.addEventListener('load', updateControls, { once: true });
 
-  swiper.pagination.destroy();
+  aboutSwiper._destroyAbout = () => {
+    if (typeof mqMobile.removeEventListener === 'function') {
+      mqMobile.removeEventListener('change', mqHandler);
+    } else {
+      mqMobile.removeListener(mqHandler);
+    }
+    aboutSwiper.destroy(true, true);
+  };
 
-  if (document.querySelector(pagEl)) {
-    swiper.pagination.init();
-    swiper.pagination.render();
-    swiper.pagination.update();
-  }
+  return aboutSwiper;
 }
 
-const aboutSwiper = new Swiper('.about-swiper', {
-  modules: [Navigation, Pagination],
-
-  slidesPerView: 1,
-  spaceBetween: 0,
-  speed: 600,
-
-  navigation: {
-    nextEl: '.about-mob-next',
-    prevEl: '.about-mob-prev',
-  },
-
-  pagination: {
-    el: '.about-mob-pagination',
-    clickable: true,
-  },
-
-  grabCursor: true,
-  allowTouchMove: true,
-  watchOverflow: true,
-
-  breakpoints: { 768: {}, 1440: {} },
-
-  on: {
-    init(swiper) { applyAboutControls(swiper); },
-    breakpoint(swiper) { applyAboutControls(swiper); },
-  },
-});
+initAboutSwiper();

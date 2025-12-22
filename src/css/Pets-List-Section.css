@@ -205,8 +205,6 @@
     max-width: 312px;
   }
   .categories-list {
-    max-width: 571px;
-    margin: 0 auto;
     margin-bottom: 32px;
   }
 }
@@ -216,8 +214,6 @@
     padding-bottom: 80px;
   }
   .categories-list {
-    max-width: 1280px;
-    margin: 0 auto;
     margin-bottom: 40px;
   }
   .pets-title {
@@ -241,7 +237,7 @@
     padding: 0;
   }
   .animals-item {
-    width: 392px;
+    width: calc((100% - 64 / 3));
   }
 
   .loadmore-btn {

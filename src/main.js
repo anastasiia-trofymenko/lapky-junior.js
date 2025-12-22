@@ -1,5 +1,9 @@
+// styles
+import './css/styles.css';
+
 // MODERN NORMALIZE
 import 'modern-normalize/modern-normalize.css';
+
 // Swaper
 import "swiper/css";
 import "swiper/css/navigation";

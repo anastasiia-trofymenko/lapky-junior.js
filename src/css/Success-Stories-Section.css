@@ -11,6 +11,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 40px;
 }
 
 .success-stories__title {
@@ -45,7 +46,7 @@
   display: flex;
   gap: 4px;
   align-items: center;
-  margin: 32px 0 12px;
+  margin-bottom: 32px;
 }
 
 .story-rating svg,
@@ -66,6 +67,7 @@
   margin-bottom: 32px;
   font-size: 18px;
   line-height: 1.5;
+
 }
 
 .story-author {
@@ -80,7 +82,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 64px;
 }
 
 /* Pagination dots */
@@ -170,6 +171,10 @@
     padding-top: 80px;
     padding-bottom: 80px;
   }
+  .story-rating {
+  margin-bottom: 32px;
+}
+
   .success-stories__title {
     font-size: 48px;
   }
