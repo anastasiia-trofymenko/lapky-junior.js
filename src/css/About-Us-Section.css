@@ -48,10 +48,7 @@
   padding: 12px;
 
   color: #fff;
-  font: 400 14px/1.5 "Open Sans", sans-serif;
-
   border-radius: 8px;
-  background: rgba(0, 0, 0, 0.35);
 }
 
 /* ===== button ===== */
@@ -147,6 +144,7 @@
 
   width: auto !important;
   margin: 0 !important;
+  color: #000;
 }
 
 .about-mobile-buttons {
