@@ -1,5 +1,8 @@
 # 🐾 Lapky Shelter
 
+🌍 **Read this README in other languages:**  
+[Українська/Ukrainian](README_ua.md)
+
 ## 📖 Project Overview
 
 **Lapky Shelter** is a responsive web application for an animal shelter that allows users to browse pets and submit requests for meetings or adoption.
